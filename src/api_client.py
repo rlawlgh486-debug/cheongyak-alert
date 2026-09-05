@@ -6,8 +6,12 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 
 from config import (
-    API_KEY, APT_DETAIL_ENDPOINT, APT_MODEL_ENDPOINT,
-    SIDO_NORMALIZE, SPECIAL_FIELD_LABELS, LOG_FILE,
+    API_KEY,
+    APT_DETAIL_ENDPOINT, APT_MODEL_ENDPOINT,
+    URBTY_DETAIL_ENDPOINT, URBTY_MODEL_ENDPOINT,
+    RENT_DETAIL_ENDPOINT, RENT_MODEL_ENDPOINT,
+    SIDO_NORMALIZE, SPECIAL_FIELD_LABELS_APT, SPECIAL_FIELD_LABELS_RENT,
+    URBTY_RENTAL_CODES, LOG_FILE,
 )
 
 logging.basicConfig(
@@ -30,52 +34,7 @@ def _get(url: str, params: dict) -> Optional[dict]:
         return None
 
 
-def fetch_notice_list(days: int = 14) -> List[Dict[str, Any]]:
-    """최근 N일 이내 모집공고일의 APT 분양정보 목록(공고 단위)을 전부 조회."""
-    cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
-    items: List[Dict[str, Any]] = []
-    page = 1
-    per_page = 100
-
-    while True:
-        params = {
-            "page": page,
-            "perPage": per_page,
-            "cond[RCRIT_PBLANC_DE::GTE]": cutoff,
-        }
-        logger.info(f"[APT 목록] {page}페이지 조회 중... (모집공고일 >= {cutoff})")
-        data = _get(APT_DETAIL_ENDPOINT, params)
-        if not data:
-            break
-
-        batch = data.get("data", [])
-        items.extend(batch)
-
-        total = data.get("totalCount", 0)
-        if not batch or page * per_page >= total:
-            break
-        page += 1
-
-    logger.info(f"[APT 목록] 총 {len(items)}건 조회 완료")
-    return items
-
-
-def fetch_model_rows(house_manage_no: str, pblanc_no: str) -> List[Dict[str, Any]]:
-    """공고 하나의 주택형별 상세(분양가/평형/특별공급 세대수)를 조회."""
-    params = {
-        "page": 1,
-        "perPage": 50,
-        "cond[HOUSE_MANAGE_NO::EQ]": house_manage_no,
-        "cond[PBLANC_NO::EQ]": pblanc_no,
-    }
-    data = _get(APT_MODEL_ENDPOINT, params)
-    if not data:
-        return []
-    return data.get("data", [])
-
-
 def _to_int(v) -> int:
-    """'1,234' 같은 문자열이나 None을 안전하게 int로 변환."""
     if v is None or v == "":
         return 0
     if isinstance(v, (int, float)):
@@ -120,8 +79,52 @@ def _agency_from_names(house_nm: str, bsns_mby_nm: str) -> str:
     return "민간"
 
 
-def enrich_with_model(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-    """공고 1건 + 주택형별 상세를 합쳐 웹앱이 쓰는 최종 포맷으로 변환."""
+def _fetch_list(endpoint: str, days: int, label: str) -> List[Dict[str, Any]]:
+    """공통 페이지네이션: 최근 N일 이내 모집공고일의 공고 목록 조회."""
+    cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
+    items: List[Dict[str, Any]] = []
+    page = 1
+    per_page = 100
+
+    while True:
+        params = {
+            "page": page,
+            "perPage": per_page,
+            "cond[RCRIT_PBLANC_DE::GTE]": cutoff,
+        }
+        logger.info(f"[{label}] {page}페이지 조회 중... (모집공고일 >= {cutoff})")
+        data = _get(endpoint, params)
+        if not data:
+            break
+
+        batch = data.get("data", [])
+        items.extend(batch)
+
+        total = data.get("totalCount", 0)
+        if not batch or page * per_page >= total:
+            break
+        page += 1
+
+    logger.info(f"[{label}] 총 {len(items)}건 조회 완료")
+    return items
+
+
+def _fetch_model_rows(endpoint: str, house_manage_no: str, pblanc_no: str) -> List[Dict[str, Any]]:
+    params = {
+        "page": 1,
+        "perPage": 50,
+        "cond[HOUSE_MANAGE_NO::EQ]": house_manage_no,
+        "cond[PBLANC_NO::EQ]": pblanc_no,
+    }
+    data = _get(endpoint, params)
+    if not data:
+        return []
+    return data.get("data", [])
+
+
+# ───────────────────────── APT 분양정보 (매매) ─────────────────────────
+
+def _enrich_apt(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     house_no = notice.get("HOUSE_MANAGE_NO", "")
     pblanc_no = notice.get("PBLANC_NO", "")
     name = notice.get("HOUSE_NM", "")
@@ -131,15 +134,13 @@ def enrich_with_model(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     win_date = notice.get("PRZWNER_PRESNATN_DE") or r_end
 
     if not (house_no and pblanc_no and name and r_start and r_end):
-        # 접수 기간이 없으면(사전청약 등 특수 케이스) 상태 계산이 안 되므로 제외
         return None
 
-    rows = fetch_model_rows(house_no, pblanc_no)
-    time.sleep(0.15)  # API 서버 부담 완화
+    rows = _fetch_model_rows(APT_MODEL_ENDPOINT, house_no, pblanc_no)
+    time.sleep(0.15)
 
-    sizes = []
-    prices = []
-    special_totals = {label: 0 for label in SPECIAL_FIELD_LABELS.values()}
+    sizes, prices = [], []
+    special_totals = {label: 0 for label in SPECIAL_FIELD_LABELS_APT.values()}
     households = 0
 
     for row in rows:
@@ -150,58 +151,183 @@ def enrich_with_model(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         if price:
             prices.append(price)
         households += _to_int(row.get("SUPLY_HSHLDCO")) + _to_int(row.get("SPSPLY_HSHLDCO"))
-        for field, label in SPECIAL_FIELD_LABELS.items():
+        for field, label in SPECIAL_FIELD_LABELS_APT.items():
             special_totals[label] += _to_int(row.get(field))
 
     if not sizes:
-        sizes = [84]  # 정보 없으면 임시값 (표시만 되고 필터링엔 영향 적음)
+        sizes = [84]
 
     sido, gu = _split_address(notice.get("HSSPLY_ADRES", ""))
     special = [label for label, cnt in special_totals.items() if cnt > 0]
 
     return {
-        "id": f"{house_no}_{pblanc_no}",
+        "id": f"apt_{house_no}_{pblanc_no}",
         "name": name,
         "agency": _agency_from_names(name, notice.get("BSNS_MBY_NM", "")),
-        "sido": sido,
-        "gu": gu,
+        "sido": sido, "gu": gu,
         "addr": notice.get("HSSPLY_ADRES", f"{sido} {gu}".strip()),
         "sizes": sorted(set(sizes)),
         "type": "매매",
         "priceMin": min(prices) if prices else 0,
         "priceMax": max(prices) if prices else 0,
-        "deposit": 0,
+        "deposit": 0, "rent": 0,
+        "households": households,
+        "special": special,
+        "link": notice.get("PBLANC_URL") or notice.get("HMPG_ADRES") or "https://www.applyhome.co.kr/",
+        "rStart": r_start, "rEnd": r_end,
+        "winDate": win_date, "noticeDate": notice_date,
+    }
+
+
+# ───────────────────── 공공지원 민간임대 (전세) ─────────────────────
+
+def _enrich_rent(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    house_no = notice.get("HOUSE_MANAGE_NO", "")
+    pblanc_no = notice.get("PBLANC_NO", "")
+    name = notice.get("HOUSE_NM", "")
+    r_start = notice.get("SUBSCRPT_RCEPT_BGNDE") or ""
+    r_end = notice.get("SUBSCRPT_RCEPT_ENDDE") or ""
+    notice_date = notice.get("RCRIT_PBLANC_DE") or ""
+    win_date = notice.get("PRZWNER_PRESNATN_DE") or r_end
+
+    if not (house_no and pblanc_no and name and r_start and r_end):
+        return None
+
+    rows = _fetch_model_rows(RENT_MODEL_ENDPOINT, house_no, pblanc_no)
+    time.sleep(0.15)
+
+    sizes, deposits = [], []
+    special_totals = {label: 0 for label in SPECIAL_FIELD_LABELS_RENT.values()}
+    households = 0
+
+    for row in rows:
+        area = _to_float(row.get("EXCLUSE_AR")) or _to_float(row.get("SUPLY_AR"))
+        if area:
+            sizes.append(round(area))
+        amount = _to_int(row.get("SUPLY_AMOUNT"))
+        if amount:
+            deposits.append(amount)
+        households += _to_int(row.get("SUPLY_HSHLDCO"))
+        for field, label in SPECIAL_FIELD_LABELS_RENT.items():
+            special_totals[label] += _to_int(row.get(field))
+
+    if not sizes:
+        sizes = [59]
+
+    sido, gu = _split_address(notice.get("HSSPLY_ADRES", ""))
+    special = [label for label, cnt in special_totals.items() if cnt > 0]
+
+    return {
+        "id": f"rent_{house_no}_{pblanc_no}",
+        "name": name,
+        "agency": _agency_from_names(name, notice.get("BSNS_MBY_NM", "")),
+        "sido": sido, "gu": gu,
+        "addr": notice.get("HSSPLY_ADRES", f"{sido} {gu}".strip()),
+        "sizes": sorted(set(sizes)),
+        "type": "전세",
+        "priceMin": 0, "priceMax": 0,
+        "deposit": min(deposits) if deposits else 0,
         "rent": 0,
         "households": households,
         "special": special,
         "link": notice.get("PBLANC_URL") or notice.get("HMPG_ADRES") or "https://www.applyhome.co.kr/",
-        "rStart": r_start,
-        "rEnd": r_end,
-        "winDate": win_date,
-        "noticeDate": notice_date,
+        "rStart": r_start, "rEnd": r_end,
+        "winDate": win_date, "noticeDate": notice_date,
     }
 
 
+# ─────────────── 오피스텔/도시형/민간임대/생활숙박시설 (매매 또는 월세) ───────────────
+
+def _enrich_urbty(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    house_no = notice.get("HOUSE_MANAGE_NO", "")
+    pblanc_no = notice.get("PBLANC_NO", "")
+    name = notice.get("HOUSE_NM", "")
+    r_start = notice.get("SUBSCRPT_RCEPT_BGNDE") or ""
+    r_end = notice.get("SUBSCRPT_RCEPT_ENDDE") or ""
+    notice_date = notice.get("RCRIT_PBLANC_DE") or ""
+    win_date = notice.get("PRZWNER_PRESNATN_DE") or r_end
+
+    if not (house_no and pblanc_no and name and r_start and r_end):
+        return None
+
+    house_secd = str(notice.get("SEARCH_HOUSE_SECD", ""))
+    is_rental = house_secd in URBTY_RENTAL_CODES  # 0203 민간임대, 0204 생활형숙박시설
+
+    rows = _fetch_model_rows(URBTY_MODEL_ENDPOINT, house_no, pblanc_no)
+    time.sleep(0.15)
+
+    sizes, amounts = [], []
+    households = 0
+    for row in rows:
+        area = _to_float(row.get("EXCLUSE_AR"))
+        if area:
+            sizes.append(round(area))
+        amount = _to_int(row.get("SUPLY_AMOUNT"))
+        if amount:
+            amounts.append(amount)
+        households += _to_int(row.get("SUPLY_HSHLDCO"))
+
+    if not sizes:
+        sizes = [30]
+
+    sido, gu = _split_address(notice.get("HSSPLY_ADRES", ""))
+
+    # 이 API는 특별공급 세대수 항목을 제공하지 않음
+    if is_rental:
+        listing_type = "월세"
+        deposit_val = min(amounts) if amounts else 0
+        price_min = price_max = 0
+    else:
+        listing_type = "매매"
+        deposit_val = 0
+        price_min = min(amounts) if amounts else 0
+        price_max = max(amounts) if amounts else 0
+
+    return {
+        "id": f"urbty_{house_no}_{pblanc_no}",
+        "name": name,
+        "agency": _agency_from_names(name, notice.get("BSNS_MBY_NM", "")),
+        "sido": sido, "gu": gu,
+        "addr": notice.get("HSSPLY_ADRES", f"{sido} {gu}".strip()),
+        "sizes": sorted(set(sizes)),
+        "type": listing_type,
+        "priceMin": price_min, "priceMax": price_max,
+        "deposit": deposit_val, "rent": 0,
+        "households": households,
+        "special": [],
+        "link": notice.get("PBLANC_URL") or notice.get("HMPG_ADRES") or "https://www.applyhome.co.kr/",
+        "rStart": r_start, "rEnd": r_end,
+        "winDate": win_date, "noticeDate": notice_date,
+    }
+
+
+def _collect(endpoint: str, label: str, days: int, enrich_fn) -> List[Dict[str, Any]]:
+    notices = _fetch_list(endpoint, days, label)
+    results = []
+    for i, notice in enumerate(notices, 1):
+        try:
+            item = enrich_fn(notice)
+            if item:
+                results.append(item)
+        except Exception as e:
+            logger.error(f"[{label}] 변환 실패 ({notice.get('HOUSE_NM','?')}): {e}")
+        if i % 10 == 0:
+            logger.info(f"  [{label}] ...{i}/{len(notices)}건 처리 중")
+    logger.info(f"[{label}] 최종 변환 완료: {len(results)}건")
+    return results
+
+
 def get_recent_listings(days: int = 14) -> List[Dict[str, Any]]:
-    """웹앱 스키마로 변환된 최근 공고 목록 (APT/매매 중심)."""
+    """매매(APT) + 전세(공공지원 민간임대) + 월세(민간임대/생활숙박시설)를 모두 모아 반환."""
     if not API_KEY:
         logger.error("PUBLIC_DATA_API_KEY 환경변수가 설정되지 않았습니다.")
         return []
 
-    notices = fetch_notice_list(days=days)
-    if not notices:
-        return []
+    all_results: List[Dict[str, Any]] = []
 
-    results = []
-    for i, notice in enumerate(notices, 1):
-        try:
-            item = enrich_with_model(notice)
-            if item:
-                results.append(item)
-        except Exception as e:
-            logger.error(f"공고 변환 실패 ({notice.get('HOUSE_NM','?')}): {e}")
-        if i % 10 == 0:
-            logger.info(f"  ...{i}/{len(notices)}건 처리 중")
+    all_results += _collect(APT_DETAIL_ENDPOINT, "APT/매매", days, _enrich_apt)
+    all_results += _collect(RENT_DETAIL_ENDPOINT, "공공지원민간임대/전세", days, _enrich_rent)
+    all_results += _collect(URBTY_DETAIL_ENDPOINT, "오피스텔등/매매·월세", days, _enrich_urbty)
 
-    logger.info(f"최종 변환 완료: {len(results)}건")
-    return results
+    logger.info(f"전체 소스 합산 완료: {len(all_results)}건")
+    return all_results
