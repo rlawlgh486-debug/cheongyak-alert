@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="color-scheme" content="light only" />
+<meta name="theme-color" content="#FFFFFF" />
+<meta name="supported-color-schemes" content="light" />
+<title>청약모아</title>
+
+<!-- PWA: 아이폰 홈 화면에 앱처럼 추가하기 위한 설정 -->
+<link rel="manifest" href="./manifest.json" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="청약모아" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-icon" href="./icons/icon-192.png" />
+<link rel="icon" href="./icons/icon-192.png" />
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    color-scheme: light only;
+    --blue:#3182F6; --blue-weak:#EBF2FE;
+    --ink:#191F28; --ink-sub:#4E5968; --gray:#8B95A1;
+    --line:#E5E8EB; --bg:#F2F4F6; --card:#FFFFFF;
+    --red:#F04452; --red-weak:#FFEEF0;
+    --green:#00C896; --green-weak:#E6FBF5;
+    --r-lg:20px; --r-md:14px; --r-sm:10px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{
+    height:100%;
+    background:#F2F4F6 !important;
+    -webkit-text-size-adjust:100%;
+  }
+  @media (prefers-color-scheme: dark){
+    html, body, #app{ background:#F2F4F6 !important; color:#191F28 !important; }
+  }
+  body{
+    min-height:100%; background:#F2F4F6 !important; color:var(--ink);
+    font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased; display:flex; justify-content:center;
+    overscroll-behavior-y:none;
+  }
+  #app{ width:100%; max-width:430px; min-height:100vh; padding-bottom:92px; position:relative; background:#F2F4F6; }
+
+  header{
+    position:sticky; top:0; z-index:30; background:var(--card);
+    padding:16px 20px 12px 20px; border-bottom:1px solid var(--line);
+  }
+  .header-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .brand h1{ font-size:20px; font-weight:800; letter-spacing:-.3px; }
+  .brand p{ font-size:12px; color:var(--gray); margin-top:2px; }
+  .me-btn{
+    display:flex; align-items:center; gap:5px; background:var(--blue-weak); color:var(--blue);
+    border:none; border-radius:100px; padding:9px 13px; font-size:13px; font-weight:700;
+    cursor:pointer; font-family:inherit; -webkit-tap-highlight-color:transparent;
+  }
+  .me-btn:active{ opacity:.7; }
+  .score-pill{ background:var(--blue); color:#fff; font-size:11px; font-weight:800; border-radius:100px; padding:2px 7px; }
+
+  .region-row{ display:flex; gap:8px; margin-bottom:10px; }
+  .region-row select{
+    flex:1; padding:11px 12px; border-radius:var(--r-sm); border:1px solid var(--line);
+    background:var(--bg); font-size:13.5px; font-weight:700; color:var(--ink);
+    font-family:inherit; cursor:pointer; appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B95A1' stroke-width='3' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat; background-position:right 12px center;
+    padding-right:30px;
+  }
+  .region-row select:disabled{ opacity:.5; cursor:not-allowed; }
+
+  .active-region{ display:none; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .active-region.show{ display:flex; }
+  .rchip{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--blue-weak); color:var(--blue);
+    border:1px solid #D3E4FD; border-radius:100px;
+    padding:7px 8px 7px 13px; font-size:13px; font-weight:700;
+    animation:chipIn .18s ease-out;
+  }
+  @keyframes chipIn{ from{ transform:scale(.9); opacity:0 } to{ transform:scale(1); opacity:1 } }
+  .rchip button{
+    width:18px; height:18px; border-radius:100px; border:none;
+    background:rgba(49,130,246,.16); cursor:pointer; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    -webkit-tap-highlight-color:transparent; transition:.12s;
+  }
+  .rchip button:active{ transform:scale(.85); background:rgba(49,130,246,.3); }
+  .rchip button svg{ width:10px; height:10px; stroke:var(--blue); stroke-width:3.2; fill:none; stroke-linecap:round; }
+
+  .search-box{
+    display:flex; align-items:center; gap:8px; background:var(--bg);
+    border-radius:var(--r-sm); padding:11px 14px;
+  }
+  .search-box svg{ width:16px; height:16px; stroke:var(--gray); stroke-width:2.5; fill:none; flex-shrink:0; }
+  .search-box input{ border:none; outline:none; font-size:14px; width:100%; font-family:inherit; background:transparent; color:var(--ink); }
+  .search-box input::placeholder{ color:var(--gray); }
+  .clear-search{ background:none; border:none; cursor:pointer; padding:0; display:none; }
+  .clear-search.show{ display:block; }
+  .clear-search svg{ width:16px; height:16px; stroke:var(--gray); }
+
+  .toolbar{ padding:12px 20px 8px 20px; }
+  .chips{ display:flex; gap:6px; overflow-x:auto; padding-bottom:2px; }
+  .chips::-webkit-scrollbar{ display:none; }
+  .chip{
+    white-space:nowrap; font-size:12.5px; font-weight:700; color:var(--ink-sub);
+    background:var(--card); border:1px solid var(--line); border-radius:100px;
+    padding:8px 13px; cursor:pointer; font-family:inherit; transition:.12s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .chip:active{ transform:scale(.96); }
+  .chip.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .chip:disabled{ opacity:.35; cursor:not-allowed; }
+
+  .result-bar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 20px 8px 20px;
+  }
+  .result-bar .count{ font-size:13px; color:var(--ink-sub); font-weight:600; }
+  .result-bar .count b{ color:var(--ink); font-weight:800; }
+  .reset-btn{
+    font-size:12.5px; font-weight:700; color:var(--gray); background:none;
+    border:none; cursor:pointer; font-family:inherit; display:none;
+  }
+  .reset-btn.show{ display:block; }
+
+  .list{ padding:0 20px; display:flex; flex-direction:column; gap:10px; }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg);
+    padding:16px; cursor:pointer; transition:.12s; -webkit-tap-highlight-color:transparent;
+  }
+  .card:active{ transform:scale(.985); }
+  .card.dim{ opacity:.55; }
+  .card-top{ display:flex; align-items:center; gap:6px; margin-bottom:10px; }
+  .badges{ display:flex; gap:5px; flex-wrap:wrap; }
+  .badge{ font-size:11px; font-weight:800; padding:3px 8px; border-radius:6px; }
+  .badge.ag-SH{ background:#EAF3FF; color:#1B64DA; }
+  .badge.ag-LH{ background:#F0EEFF; color:#6A4CFF; }
+  .badge.ag-민간{ background:#F2F4F6; color:var(--ink-sub); }
+  .badge.tp-매매{ background:#FFF1E8; color:#C2410C; }
+  .badge.tp-전세{ background:#E8F3FF; color:#0052CC; }
+  .badge.tp-월세{ background:#EAF7EE; color:#1C7C43; }
+  .status{ font-size:11px; font-weight:800; padding:3px 8px; border-radius:6px; margin-left:auto; }
+  .status.ongoing{ background:var(--green-weak); color:#00A876; }
+  .status.soon{ background:var(--red-weak); color:var(--red); }
+  .status.upcoming{ background:var(--blue-weak); color:var(--blue); }
+  .status.closed{ background:var(--bg); color:var(--gray); }
+  .heart{ background:none; border:none; cursor:pointer; padding:2px; line-height:1; -webkit-tap-highlight-color:transparent; }
+  .heart svg{ width:20px; height:20px; stroke:var(--gray); stroke-width:2; fill:none; transition:.15s; }
+  .heart.on svg{ stroke:var(--red); fill:var(--red); }
+  .heart:active svg{ transform:scale(.85); }
+
+  .card h2{ font-size:16px; font-weight:800; margin-bottom:5px; letter-spacing:-.2px; }
+  .card .loc{ font-size:12.5px; color:var(--gray); margin-bottom:10px; }
+  .price{ font-size:14.5px; font-weight:800; color:var(--ink); margin-bottom:4px; }
+  .price small{ font-size:12px; font-weight:600; color:var(--gray); margin-left:4px; }
+  .meta{ display:flex; flex-wrap:wrap; gap:10px; font-size:12px; color:var(--gray); margin-top:8px; }
+  .fit-row{ display:flex; align-items:center; gap:8px; padding-top:11px; margin-top:11px; border-top:1px solid var(--line); }
+  .fit-bg{ flex:1; height:6px; background:var(--bg); border-radius:100px; overflow:hidden; }
+  .fit-fill{ height:100%; border-radius:100px; transition:width .3s; }
+  .fit-label{ font-size:12px; font-weight:800; white-space:nowrap; }
+
+  .empty{ text-align:center; padding:64px 30px; color:var(--gray); }
+  .empty .emo{ font-size:32px; margin-bottom:12px; }
+  .empty p{ font-size:14px; line-height:1.6; margin-bottom:16px; }
+  .empty button{
+    background:var(--ink); color:#fff; border:none; border-radius:100px;
+    padding:11px 20px; font-size:13.5px; font-weight:700; cursor:pointer; font-family:inherit;
+  }
+
+  .gnb{
+    position:fixed; bottom:0; left:50%; transform:translateX(-50%);
+    width:100%; max-width:430px; background:rgba(255,255,255,.94);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-top:1px solid var(--line); display:flex; z-index:40;
+    padding-bottom:env(safe-area-inset-bottom,0);
+  }
+  .gnb-item{
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:3px;
+    padding:9px 0 7px 0; background:none; border:none; cursor:pointer;
+    font-family:inherit; color:var(--gray); transition:color .18s;
+    -webkit-tap-highlight-color:transparent; position:relative;
+  }
+  .gnb-item .ic{ width:24px; height:24px; display:flex; align-items:center; justify-content:center; transition:transform .15s; }
+  .gnb-item .ic svg{ width:24px; height:24px; stroke:currentColor; stroke-width:1.9; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .gnb-item .ic svg .fillp{ fill:currentColor; fill-opacity:0; stroke:none; transition:fill-opacity .2s; }
+  .gnb-item.active .ic svg .fillp{ fill-opacity:1; }
+  .gnb-item .lb{ font-size:11px; font-weight:600; }
+  .gnb-item.active{ color:var(--blue); }
+  .gnb-item.active .lb{ font-weight:800; }
+  .gnb-item:active .ic{ transform:scale(.84); }
+  @keyframes bounce{ 0%{transform:scale(1)} 35%{transform:scale(.8)} 65%{transform:scale(1.14)} 100%{transform:scale(1)} }
+  .gnb-item.bump .ic{ animation:bounce .4s cubic-bezier(.34,1.56,.64,1); }
+  .fav-dot{
+    position:absolute; top:6px; right:calc(50% - 16px); min-width:16px; height:16px;
+    background:var(--red); color:#fff; border-radius:100px; font-size:10px; font-weight:800;
+    display:none; align-items:center; justify-content:center; padding:0 4px;
+  }
+  .fav-dot.show{ display:flex; }
+
+  .page{ display:none; }
+  .page.show{ display:block; }
+
+  .ov{ position:fixed; inset:0; background:rgba(15,20,25,.5); z-index:80; display:none; align-items:flex-end; justify-content:center; }
+  .ov.show{ display:flex; }
+  .sheet{
+    width:100%; max-width:430px; background:var(--card); border-radius:22px 22px 0 0;
+    padding:8px 20px 30px 20px; max-height:90vh; overflow-y:auto;
+    animation:up .24s cubic-bezier(.32,.72,0,1);
+  }
+  @keyframes up{ from{transform:translateY(30px); opacity:0} to{transform:translateY(0); opacity:1} }
+  .handle{ width:36px; height:4px; background:var(--line); border-radius:100px; margin:8px auto 18px auto; }
+  .sheet h2{ font-size:19px; font-weight:800; margin-bottom:5px; }
+  .sheet .sub{ font-size:13px; color:var(--gray); margin-bottom:22px; line-height:1.5; }
+
+  .field{ margin-bottom:20px; }
+  .field label{ display:block; font-size:13.5px; font-weight:700; margin-bottom:9px; }
+  .field .hint{ font-size:12px; color:var(--gray); margin-top:7px; line-height:1.5; }
+  .seg{ display:flex; gap:6px; flex-wrap:wrap; }
+  .seg button{
+    padding:9px 14px; border-radius:100px; border:1px solid var(--line); background:var(--bg);
+    font-size:13px; font-weight:600; color:var(--ink-sub); cursor:pointer; font-family:inherit;
+    transition:.12s; -webkit-tap-highlight-color:transparent;
+  }
+  .seg button:active{ transform:scale(.95); }
+  .seg button.on{ background:var(--ink); border-color:var(--ink); color:#fff; font-weight:700; }
+  .inp{
+    width:100%; padding:12px 14px; border-radius:var(--r-sm); border:1px solid var(--line);
+    background:var(--bg); font-size:14px; font-weight:700; color:var(--ink); font-family:inherit;
+  }
+  .inp:focus{ outline:none; border-color:var(--blue); background:#fff; }
+  .row2{ display:flex; align-items:center; gap:8px; }
+  .row2 .unit{ font-size:13px; color:var(--gray); font-weight:700; white-space:nowrap; }
+  .total-pay-box{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--bg); border-radius:var(--r-sm); padding:12px 14px; margin-top:10px;
+  }
+  .total-pay-box .k{ font-size:13px; color:var(--ink-sub); font-weight:700; }
+  .total-pay-box .v{ font-size:15px; color:var(--blue); font-weight:800; }
+  .budget-val{ font-size:17px; font-weight:800; color:var(--blue); margin-bottom:8px; }
+  input[type=range]{ width:100%; accent-color:var(--blue); }
+
+  .score-box{
+    background:var(--blue-weak); border-radius:var(--r-md); padding:16px;
+    display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;
+  }
+  .score-box .num{ font-size:28px; font-weight:900; color:var(--blue); line-height:1; }
+  .score-box .num span{ font-size:14px; font-weight:700; opacity:.65; }
+  .score-box .brk{ font-size:11.5px; color:#1B64DA; text-align:right; line-height:1.6; }
+
+  .save-btn{
+    width:100%; padding:16px; background:var(--blue); color:#fff; border:none;
+    border-radius:var(--r-md); font-size:16px; font-weight:800; cursor:pointer; font-family:inherit;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .save-btn:active{ opacity:.85; }
+
+  .d-badges{ display:flex; gap:5px; flex-wrap:wrap; margin-bottom:12px; }
+  .d-title{ font-size:21px; font-weight:800; margin-bottom:5px; letter-spacing:-.3px; }
+  .d-loc{ font-size:13px; color:var(--gray); margin-bottom:20px; }
+  .d-sec{ margin-bottom:22px; }
+  .d-sec h3{ font-size:12px; font-weight:800; color:var(--gray); margin-bottom:6px; letter-spacing:.3px; }
+  .d-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); font-size:13.5px; }
+  .d-row:last-child{ border-bottom:none; }
+  .d-row .k{ color:var(--gray); flex-shrink:0; }
+  .d-row .v{ color:var(--ink); font-weight:700; text-align:right; }
+  .highlight-box{
+    background:var(--bg); border-radius:var(--r-md); padding:16px; margin-bottom:22px;
+  }
+  .highlight-box .big{ font-size:20px; font-weight:800; margin-bottom:4px; }
+  .highlight-box .cap{ font-size:12.5px; color:var(--gray); }
+  .fit-detail{ background:var(--bg); border-radius:var(--r-md); padding:16px; margin-bottom:20px; }
+  .fit-detail .hd{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .fit-detail .hd b{ font-size:16px; font-weight:800; }
+  .tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .tag{ font-size:12px; font-weight:700; padding:6px 10px; border-radius:8px; }
+  .tag.good{ background:var(--green-weak); color:#00A876; }
+  .tag.bad{ background:#fff; color:var(--gray); border:1px solid var(--line); }
+  .link-btn{
+    display:block; width:100%; text-align:center; padding:16px;
+    background:var(--ink); color:#fff; border-radius:var(--r-md);
+    font-size:15px; font-weight:800; text-decoration:none;
+  }
+  .fav-btn{
+    width:100%; padding:15px; margin-top:9px; background:var(--card);
+    border:1px solid var(--line); border-radius:var(--r-md);
+    font-size:14.5px; font-weight:700; color:var(--ink); cursor:pointer; font-family:inherit;
+  }
+
+  .toast{
+    position:fixed; bottom:100px; left:50%; transform:translateX(-50%) translateY(10px);
+    background:rgba(25,31,40,.94); color:#fff; padding:12px 20px; border-radius:100px;
+    font-size:13.5px; font-weight:600; z-index:100; opacity:0; pointer-events:none;
+    transition:opacity .22s, transform .22s; white-space:nowrap;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  .fav-head{ display:flex; align-items:center; justify-content:space-between; padding:20px 20px 10px 20px; }
+  .fav-head h2{ font-size:20px; font-weight:800; }
+  .sel-toggle{ font-size:13.5px; font-weight:700; color:var(--blue); background:none; border:none; cursor:pointer; font-family:inherit; }
+  .check{
+    width:22px; height:22px; border-radius:100px; border:2px solid var(--line); background:#fff;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .check svg{ width:12px; height:12px; stroke:#fff; stroke-width:3.5; fill:none; opacity:0; }
+  .check.on{ background:var(--blue); border-color:var(--blue); }
+  .check.on svg{ opacity:1; }
+  .sel-bar{ position:fixed; bottom:74px; left:50%; transform:translateX(-50%); width:100%; max-width:430px; padding:0 20px; display:none; z-index:39; }
+  .sel-bar.show{ display:block; }
+  .sel-inner{
+    background:var(--ink); color:#fff; border-radius:100px; padding:9px 9px 9px 18px;
+    display:flex; align-items:center; justify-content:space-between; box-shadow:0 8px 24px rgba(0,0,0,.2);
+  }
+  .sel-inner span{ font-size:13.5px; font-weight:700; }
+  .sel-inner button{ background:var(--red); color:#fff; border:none; border-radius:100px; padding:10px 18px; font-size:13px; font-weight:800; cursor:pointer; font-family:inherit; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div class="page show" id="homePage">
+    <header>
+      <div class="header-row">
+        <div class="brand">
+          <h1>청약모아</h1>
+          <p id="brandSub">전국 청약 공고를 한 곳에서</p>
+        </div>
+        <button class="me-btn" id="openProfileBtn">
+          <span id="meBtnLabel">내 조건</span>
+          <span class="score-pill" id="scorePill" style="display:none"></span>
+        </button>
+      </div>
+      <div class="region-row">
+        <select id="sidoSelect"></select>
+        <select id="guSelect" disabled></select>
+      </div>
+      <div class="active-region" id="activeRegion"></div>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="searchInput" placeholder="단지명이나 동네로 찾아보세요" />
+        <button class="clear-search" id="clearSearch"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <div class="chips" id="filterChips">
+        <button class="chip active" data-filter="all">전체</button>
+        <button class="chip" data-filter="open">접수중만</button>
+        <button class="chip" data-filter="매매">매매</button>
+        <button class="chip" data-filter="전세">전세</button>
+        <button class="chip" data-filter="월세">월세</button>
+      </div>
+    </div>
+    <div class="toolbar" style="padding-top:8px">
+      <div class="chips" id="sortChips">
+        <button class="chip active" data-sort="soon">마감임박순</button>
+        <button class="chip" data-sort="fit" id="fitChip" disabled>내 적합도순</button>
+        <button class="chip" data-sort="new">최신 공고순</button>
+        <button class="chip" data-sort="price">가격 낮은순</button>
+      </div>
+    </div>
+
+    <div class="result-bar">
+      <div class="count" id="resultCount"></div>
+      <button class="reset-btn" id="resetBtn">필터 초기화</button>
+    </div>
+
+    <div class="list" id="list"></div>
+    <div class="empty" id="emptyState" style="display:none">
+      <div class="emo">🔍</div>
+      <p>조건에 맞는 청약이 없어요<br/>필터를 조금 넓혀볼까요?</p>
+      <button id="emptyResetBtn">필터 초기화하기</button>
+    </div>
+  </div>
+
+  <div class="page" id="favPage">
+    <div class="fav-head">
+      <h2>찜한 청약</h2>
+      <button class="sel-toggle" id="selToggle">선택</button>
+    </div>
+    <div class="list" id="favList"></div>
+    <div class="empty" id="favEmpty" style="display:none">
+      <div class="emo">🤍</div>
+      <p>아직 찜한 청약이 없어요<br/>마음에 드는 공고에 하트를 눌러보세요</p>
+    </div>
+  </div>
+
+  <div class="sel-bar" id="selBar">
+    <div class="sel-inner">
+      <span id="selCount">0개 선택</span>
+      <button id="bulkDelete">삭제</button>
+    </div>
+  </div>
+
+  <div class="gnb">
+    <button class="gnb-item active" data-page="home">
+      <span class="ic"><svg viewBox="0 0 24 24">
+        <path d="M3.5 11.2 12 4l8.5 7.2V20a1 1 0 0 1-1 1h-4v-6h-7v6h-4a1 1 0 0 1-1-1v-8.8Z"/>
+        <path class="fillp" d="M3.5 11.2 12 4l8.5 7.2V20a1 1 0 0 1-1 1h-4v-6h-7v6h-4a1 1 0 0 1-1-1v-8.8Z"/>
+      </svg></span>
+      <span class="lb">홈</span>
+    </button>
+    <button class="gnb-item" data-page="fav">
+      <span class="ic"><svg viewBox="0 0 24 24">
+        <path d="M12 20.3C10 19 3.5 14.6 3.5 9.9 3.5 7 5.6 5 8.1 5c1.7 0 3 .9 3.9 2.2C12.9 5.9 14.2 5 15.9 5c2.5 0 4.6 2 4.6 4.9 0 4.7-6.5 9.1-8.5 10.4Z"/>
+        <path class="fillp" d="M12 20.3C10 19 3.5 14.6 3.5 9.9 3.5 7 5.6 5 8.1 5c1.7 0 3 .9 3.9 2.2C12.9 5.9 14.2 5 15.9 5c2.5 0 4.6 2 4.6 4.9 0 4.7-6.5 9.1-8.5 10.4Z"/>
+      </svg></span>
+      <span class="lb">찜목록</span>
+      <span class="fav-dot" id="favDot">0</span>
+    </button>
+  </div>
+
+  <div class="ov" id="profileOv">
+    <div class="sheet">
+      <div class="handle"></div>
+      <h2>내 조건 입력하기</h2>
+      <p class="sub">입력한 정보는 이 기기에만 저장돼요. 적합도 계산에만 사용됩니다.</p>
+
+      <div class="score-box">
+        <div class="num" id="liveScore">0<span>/84점</span></div>
+        <div class="brk" id="scoreBrk"></div>
+      </div>
+
+      <div class="field">
+        <label>무주택 기간</label>
+        <div class="seg" id="segNohouse"></div>
+      </div>
+
+      <div class="field">
+        <label>부양가족 수 (본인 제외)</label>
+        <div class="seg" id="segFamily"></div>
+      </div>
+
+      <div class="field">
+        <label>청약통장 납입 현황</label>
+        <div class="row2" style="margin-bottom:8px">
+          <input class="inp" type="number" id="payPer" placeholder="10" min="0" inputmode="numeric" />
+          <span class="unit">만원 × 회차당</span>
+        </div>
+        <div class="row2">
+          <input class="inp" type="number" id="payCount" placeholder="24" min="0" max="600" inputmode="numeric" />
+          <span class="unit">회 납입</span>
+        </div>
+        <div class="total-pay-box" id="totalPayBox">
+          <span class="k">총 납입액</span>
+          <span class="v" id="totalPayVal">0만원</span>
+        </div>
+        <div class="hint">1회차당 10만원까지만 가점에 인정돼요 (국민주택 기준). 예: 10만원 × 24회 = 240만원 전액 인정</div>
+      </div>
+
+      <div class="field">
+        <label>예산 (대출 포함, 최대 지불 가능액)</label>
+        <div class="budget-val" id="budgetVal">5.0억원</div>
+        <input type="range" id="budgetRange" min="3000" max="200000" step="1000" value="50000" />
+        <div class="hint">3천만원 ~ 20억원</div>
+      </div>
+
+      <div class="field">
+        <label>관심 있는 전용면적 (㎡)</label>
+        <div class="row2">
+          <input class="inp" type="number" id="sizeMin" placeholder="최소" min="0" max="300" inputmode="numeric" />
+          <span class="unit">~</span>
+          <input class="inp" type="number" id="sizeMax" placeholder="최대" min="0" max="300" inputmode="numeric" />
+        </div>
+        <div class="hint">비워두면 모든 평형을 봅니다.</div>
+      </div>
+
+      <div class="field">
+        <label>관심 있는 공급 유형</label>
+        <div class="seg" id="segType"></div>
+      </div>
+
+      <div class="field">
+        <label>해당하는 특별공급이 있나요?</label>
+        <div class="seg" id="segSpecial"></div>
+        <div class="hint">여러 개 골라도 괜찮아요. 없으면 비워두세요.</div>
+      </div>
+
+      <button class="save-btn" id="saveProfile">저장하고 적합도 보기</button>
+    </div>
+  </div>
+
+  <div class="ov" id="detailOv">
+    <div class="sheet" id="detailSheet"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+"use strict";
+
+/* ===== 지역 데이터 (전국 17개 시·도) ===== */
+var REGIONS = {
+  "서울": ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"],
+  "부산": ["강서구","금정구","기장군","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구"],
+  "대구": ["군위군","남구","달서구","달성군","동구","북구","서구","수성구","중구"],
+  "인천": ["강화군","계양구","미추홀구","남동구","동구","부평구","서구","연수구","옹진군","중구"],
+  "광주": ["광산구","남구","동구","북구","서구"],
+  "대전": ["대덕구","동구","서구","유성구","중구"],
+  "울산": ["남구","동구","북구","중구","울주군"],
+  "세종": ["세종시"],
+  "경기": ["수원시","성남시","고양시","용인시","부천시","안산시","안양시","남양주시","화성시","평택시","의정부시","시흥시","파주시","광명시","김포시","군포시","광주시","이천시","양주시","오산시","구리시","안성시","포천시","의왕시","하남시","여주시","동두천시","과천시","가평군","양평군","연천군"],
+  "강원": ["춘천시","원주시","강릉시","동해시","태백시","속초시","삼척시","홍천군","횡성군","영월군","평창군","정선군","철원군","화천군","양구군","인제군","고성군","양양군"],
+  "충북": ["청주시","충주시","제천시","보은군","옥천군","영동군","증평군","진천군","괴산군","음성군","단양군"],
+  "충남": ["천안시","공주시","보령시","아산시","서산시","논산시","계룡시","당진시","금산군","부여군","서천군","청양군","홍성군","예산군","태안군"],
+  "전북": ["전주시","군산시","익산시","정읍시","남원시","김제시","완주군","진안군","무주군","장수군","임실군","순창군","고창군","부안군"],
+  "전남": ["목포시","여수시","순천시","나주시","광양시","담양군","곡성군","구례군","고흥군","보성군","화순군","장흥군","강진군","해남군","영암군","무안군","함평군","영광군","장성군","완도군","진도군","신안군"],
+  "경북": ["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시","군위군","의성군","청송군","영양군","영덕군","청도군","고령군","성주군","칠곡군","예천군","봉화군","울진군","울릉군"],
+  "경남": ["창원시","진주시","통영시","사천시","김해시","밀양시","거제시","양산시","의령군","함안군","창녕군","고성군","남해군","하동군","산청군","함양군","거창군","합천군"],
+  "제주": ["제주시","서귀포시"]
+};
+
+/* ===== 공고 데이터 (실제 API 연동 전 샘플) ===== */
+var today = new Date();
+function addDays(n){ var d = new Date(today); d.setDate(d.getDate()+n); return d; }
+function fmtDate(d){ return (d.getMonth()+1) + "." + String(d.getDate()).padStart(2,"0"); }
+
+/* SAMPLE_RAW: listings.json을 아직 못 불러왔을 때(오프라인, 최초 배포 전) 보여줄 예시 데이터 */
+var SAMPLE_RAW = [
+  {n:"강동 리버파크 자이", ag:"민간", sd:"서울", gu:"강동구", ad:"서울 강동구 상일동", sz:[59,74,84], tp:"매매", pMin:78000, pMax:98000, dep:0, rent:0, hh:412, sp:["신혼부부","생애최초"], rs:-2, re:2, wn:9, lk:"https://www.applyhome.co.kr/"},
+  {n:"강동 고덕 공공분양 6단지", ag:"LH", sd:"서울", gu:"강동구", ad:"서울 강동구 고덕동", sz:[59,74], tp:"매매", pMin:52000, pMax:64000, dep:0, rent:0, hh:280, sp:["신혼부부","다자녀가구","생애최초"], rs:5, re:11, wn:20, lk:"https://apply.lh.or.kr/"},
+  {n:"SH 강동 행복주택 2차", ag:"SH", sd:"서울", gu:"강동구", ad:"서울 강동구 둔촌동", sz:[36,45], tp:"월세", pMin:0, pMax:0, dep:4200, rent:28, hh:150, sp:["신혼부부","생애최초"], rs:0, re:1, wn:14, lk:"https://www.i-sh.co.kr/"},
+  {n:"SH 마포 공공분양 아이파크", ag:"SH", sd:"서울", gu:"마포구", ad:"서울 마포구 상암동", sz:[59,84], tp:"매매", pMin:71000, pMax:93000, dep:0, rent:0, hh:198, sp:["신혼부부","노부모부양"], rs:8, re:12, wn:25, lk:"https://www.i-sh.co.kr/"},
+  {n:"LH 위례 신혼희망타운", ag:"LH", sd:"서울", gu:"송파구", ad:"서울 송파구 장지동", sz:[46,55], tp:"전세", pMin:0, pMax:0, dep:32000, rent:0, hh:310, sp:["신혼부부"], rs:1, re:4, wn:18, lk:"https://apply.lh.or.kr/"},
+  {n:"대구 수성 힐스테이트", ag:"민간", sd:"대구", gu:"수성구", ad:"대구 수성구 범어동", sz:[84,101], tp:"매매", pMin:56000, pMax:72000, dep:0, rent:0, hh:210, sp:["생애최초"], rs:1, re:5, wn:19, lk:"https://www.applyhome.co.kr/"},
+  {n:"김천 혁신도시 데시앙", ag:"민간", sd:"경북", gu:"김천시", ad:"경북 김천시 율곡동", sz:[74,84], tp:"매매", pMin:23000, pMax:31000, dep:0, rent:0, hh:340, sp:["생애최초","다자녀가구"], rs:3, re:8, wn:22, lk:"https://www.applyhome.co.kr/"},
+  {n:"부산 명지 국제신도시 힐스테이트", ag:"민간", sd:"부산", gu:"강서구", ad:"부산 강서구 명지동", sz:[84,101], tp:"매매", pMin:48000, pMax:60000, dep:0, rent:0, hh:430, sp:["생애최초"], rs:2, re:6, wn:19, lk:"https://www.applyhome.co.kr/"},
+  {n:"LH 세종 행복도시 6-3생활권", ag:"LH", sd:"세종", gu:"세종시", ad:"세종특별자치시 해밀동", sz:[59,74], tp:"매매", pMin:31000, pMax:39000, dep:0, rent:0, hh:520, sp:["신혼부부","다자녀가구"], rs:20, re:24, wn:35, lk:"https://apply.lh.or.kr/"},
+  {n:"제주 삼화 휴먼시아", ag:"LH", sd:"제주", gu:"제주시", ad:"제주 제주시 삼양동", sz:[46,59], tp:"월세", pMin:0, pMax:0, dep:3600, rent:22, hh:140, sp:["신혼부부","기관추천"], rs:3, re:9, wn:21, lk:"https://apply.lh.or.kr/"}
+];
+
+function sampleToListings(){
+  return SAMPLE_RAW.map(function(r, i){
+    return {
+      id: "SAMPLE-" + i,
+      name: r.n, agency: r.ag, sido: r.sd, gu: r.gu, addr: r.ad,
+      sizes: r.sz, type: r.tp,
+      priceMin: r.pMin, priceMax: r.pMax, deposit: r.dep, rent: r.rent,
+      households: r.hh, special: r.sp, link: r.lk,
+      rStart: addDays(r.rs), rEnd: addDays(r.re),
+      winDate: addDays(r.wn), noticeDate: addDays(r.rs - 7)
+    };
+  });
+}
+
+/* listings.json 형식: { "updatedAt": "ISO문자열", "items": [ {...위와 동일한 필드, 날짜는 YYYY-MM-DD 문자열} ] } */
+function jsonToListings(items){
+  return items.map(function(o, i){
+    return {
+      id: o.id || ("N" + i),
+      name: o.name, agency: o.agency, sido: o.sido, gu: o.gu, addr: o.addr,
+      sizes: o.sizes, type: o.type,
+      priceMin: o.priceMin, priceMax: o.priceMax, deposit: o.deposit, rent: o.rent,
+      households: o.households, special: o.special || [], link: o.link,
+      rStart: new Date(o.rStart), rEnd: new Date(o.rEnd),
+      winDate: new Date(o.winDate), noticeDate: new Date(o.noticeDate)
+    };
+  });
+}
+
+var LISTINGS = [];
+var dataSource = "sample";     // "sample" | "live"
+var lastUpdatedAt = null;
+
+async function loadListings(){
+  try{
+    var res = await fetch("./listings.json", { cache: "no-store" });
+    if(!res.ok) throw new Error("listings.json 없음");
+    var json = await res.json();
+    if(!json || !Array.isArray(json.items) || json.items.length === 0) throw new Error("빈 데이터");
+    LISTINGS = jsonToListings(json.items);
+    dataSource = "live";
+    lastUpdatedAt = json.updatedAt ? new Date(json.updatedAt) : null;
+  }catch(e){
+    LISTINGS = sampleToListings();
+    dataSource = "sample";
+    lastUpdatedAt = null;
+  }
+}
+
+var SPECIALS = ["신혼부부","다자녀가구","생애최초","노부모부양","기관추천"];
+var TYPES = ["매매","전세","월세"];
+var NOHOUSE_OPT = [{v:0,l:"1년 미만"},{v:1,l:"1~3년"},{v:3,l:"3~5년"},{v:5,l:"5~10년"},{v:10,l:"10~15년"},{v:15,l:"15년 이상"}];
+var FAMILY_OPT = [{v:0,l:"0명"},{v:1,l:"1명"},{v:2,l:"2명"},{v:3,l:"3명"},{v:4,l:"4명"},{v:6,l:"5명 이상"}];
+
+/* ===== 상태 ===== */
+function getStatus(l){
+  if(today < l.rStart) return {key:"upcoming", label:"접수 예정", cls:"upcoming"};
+  if(today > l.rEnd) return {key:"closed", label:"접수 마감", cls:"closed"};
+  var left = Math.ceil((l.rEnd - today)/86400000);
+  if(left <= 3) return {key:"soon", label:"마감 D-" + left, cls:"soon"};
+  return {key:"ongoing", label:"접수중", cls:"ongoing"};
+}
+
+/* ===== 금액 표기 ===== */
+function eok(man){
+  var v = man/10000;
+  return (v >= 10 ? v.toFixed(0) : v.toFixed(1).replace(/\.0$/,"")) + "억";
+}
+function priceMain(l){
+  if(l.type === "매매"){
+    if(l.priceMin === l.priceMax) return eok(l.priceMin);
+    return eok(l.priceMin) + " ~ " + eok(l.priceMax);
+  }
+  if(l.type === "전세") return "보증금 " + eok(l.deposit);
+  return "보증금 " + l.deposit.toLocaleString() + "만원 / 월 " + l.rent + "만원";
+}
+function priceCaption(l){
+  if(l.type === "매매") return "분양가 (최저~최고)";
+  if(l.type === "전세") return "전세 보증금";
+  return "월세 조건";
+}
+/* 비교·정렬용 대표 금액 (만원) */
+function priceKey(l){
+  if(l.type === "매매") return l.priceMin;
+  if(l.type === "전세") return l.deposit;
+  return l.deposit + l.rent * 100;
+}
+
+/* ===== 프로필 ===== */
+var profile = {
+  nohouse:0, family:0, payPer:0, payCount:0,
+  budget:50000, sizeMin:null, sizeMax:null, types:[], special:[]
+};
+var favorites = new Set();
+var hasProfile = false;
+
+function loadState(){
+  // 게스트(비로그인) 상태의 기본값: 이 브라우저에 저장된 값
+  try{
+    var p = localStorage.getItem("cheongyak-profile-v2");
+    if(p){ profile = Object.assign(profile, JSON.parse(p)); hasProfile = true; }
+  }catch(e){}
+  try{
+    var f = localStorage.getItem("cheongyak-favorites");
+    if(f){ favorites = new Set(JSON.parse(f)); }
+  }catch(e){}
+  try{
+    var r = localStorage.getItem("cheongyak-region");
+    if(r){
+      var rg = JSON.parse(r);
+      if(rg.sido && REGIONS[rg.sido]){
+        state.sido = rg.sido;
+        if(rg.gu && REGIONS[rg.sido].indexOf(rg.gu) > -1) state.gu = rg.gu;
+      }
+    }
+  }catch(e){}
+}
+function saveRegion(){
+  try{ localStorage.setItem("cheongyak-region", JSON.stringify({ sido: state.sido, gu: state.gu })); }catch(e){}
+}
+function saveProfile(){
+  hasProfile = true;
+  try{ localStorage.setItem("cheongyak-profile-v2", JSON.stringify(profile)); }catch(e){}
+}
+function saveFavorites(){
+  try{ localStorage.setItem("cheongyak-favorites", JSON.stringify(Array.from(favorites))); }catch(e){}
+}
+
+/* 회차당 납입금액 × 회차 → 총액 및 가점 인정 회차 계산
+   국민주택 청약저축 인정 기준: 1회차당 최대 10만원까지만 인정 */
+function payInfo(){
+  var per = profile.payPer || 0;
+  var cnt = profile.payCount || 0;
+  var rawTotal = per * cnt;
+  var perCapped = Math.min(per, 10);
+  var recognizedTotal = perCapped * cnt;
+  var recognizedMonths = per > 0 ? Math.min(cnt, Math.floor(recognizedTotal / 10)) : 0;
+  return { rawTotal: rawTotal, recognizedTotal: recognizedTotal, recognizedMonths: recognizedMonths, capped: per > 10 };
+}
+
+/* 청약가점 84점 만점 */
+function gajeom(){
+  var nh = profile.nohouse < 1 ? 2 : Math.min(2 * (Math.floor(Math.min(profile.nohouse,15)) + 1), 32);
+  var fam = Math.min(5 + 5 * profile.family, 35);
+  var months = payInfo().recognizedMonths;
+  var acc;
+  if(months <= 0) acc = 1;
+  else if(months < 6) acc = 2;
+  else acc = Math.min(2 + Math.floor(months/12) + 1, 17);
+  return { total: nh + fam + acc, nh: nh, fam: fam, acc: acc };
+}
+
+/* ===== 적합도 ===== */
+function computeFit(l){
+  if(!hasProfile) return null;
+  var score = 0;
+  var reasons = [];
+
+  // 1) 비용 (40점)
+  var need = priceKey(l);
+  if(need <= profile.budget){
+    score += 40;
+    reasons.push({t:"예산 안에 들어와요", good:true});
+  } else if(l.type === "매매" && l.priceMin <= profile.budget){
+    score += 22;
+    reasons.push({t:"작은 평형만 예산 안이에요", good:true});
+  } else {
+    var over = Math.round((need - profile.budget)/10000 * 10)/10;
+    reasons.push({t:"예산보다 약 " + over + "억 높아요", good:false});
+  }
+
+  // 2) 공급 유형 (15점)
+  if(profile.types.length === 0){
+    score += 8;
+  } else if(profile.types.indexOf(l.type) > -1){
+    score += 15;
+    reasons.push({t:"원하시는 " + l.type + " 공급이에요", good:true});
+  } else {
+    reasons.push({t:l.type + " 공급이라 관심 유형과 달라요", good:false});
+  }
+
+  // 3) 면적 (15점)
+  var hasRange = (profile.sizeMin != null && profile.sizeMin !== "") || (profile.sizeMax != null && profile.sizeMax !== "");
+  var mn = (profile.sizeMin != null && profile.sizeMin !== "") ? Number(profile.sizeMin) : 0;
+  var mx = (profile.sizeMax != null && profile.sizeMax !== "") ? Number(profile.sizeMax) : 999;
+  if(!hasRange){
+    score += 8;
+  } else if(l.sizes.some(function(s){ return s >= mn && s <= mx; })){
+    score += 15;
+    reasons.push({t:"원하는 평형이 있어요", good:true});
+  } else {
+    reasons.push({t:"관심 평형(" + mn + "~" + mx + "㎡)이 없어요", good:false});
+  }
+
+  // 4) 특별공급 (20점)
+  var match = l.special.filter(function(s){ return profile.special.indexOf(s) > -1; });
+  if(match.length > 0){
+    score += 20;
+    reasons.push({t:match.join(", ") + " 특별공급 대상이에요", good:true});
+  } else if(profile.special.length === 0){
+    score += 6;
+  } else {
+    reasons.push({t:"해당하는 특별공급이 없어요", good:false});
+  }
+
+  // 5) 가점 경쟁력 (10점)
+  var g = gajeom();
+  if(g.total >= 64){
+    score += 10;
+    reasons.push({t:"내 가점 " + g.total + "점 · 일반공급도 해볼 만해요", good:true});
+  } else if(g.total >= 45){
+    score += 6;
+    reasons.push({t:"내 가점 " + g.total + "점 · 특별공급을 노려보세요", good:true});
+  } else {
+    score += 2;
+    reasons.push({t:"내 가점 " + g.total + "점 · 경쟁이 쉽지 않아요", good:false});
+  }
+
+  score = Math.max(0, Math.min(100, Math.round(score)));
+  var label;
+  if(score >= 80) label = "아주 잘 맞아요";
+  else if(score >= 60) label = "잘 맞아요";
+  else if(score >= 40) label = "살펴볼 만해요";
+  else label = "조건과 달라요";
+
+  return { score: score, label: label, reasons: reasons };
+}
+function fitColor(s){
+  if(s >= 60) return "#3182F6";
+  if(s >= 40) return "#8B95A1";
+  return "#C6CCD3";
+}
+
+/* ===== UI 상태 ===== */
+var state = { sido:"", gu:"", filter:"all", sort:"soon", q:"" };
+var currentPage = "home";
+var selectMode = false;
+var selectedIds = new Set();
+
+/* ===== DOM helper ===== */
+function $(id){ return document.getElementById(id); }
+function el(tag, cls, txt){
+  var e = document.createElement(tag);
+  if(cls) e.className = cls;
+  if(txt != null) e.textContent = txt;
+  return e;
+}
+var HEART_SVG = '<svg viewBox="0 0 24 24"><path d="M12 20.3C10 19 3.5 14.6 3.5 9.9 3.5 7 5.6 5 8.1 5c1.7 0 3 .9 3.9 2.2C12.9 5.9 14.2 5 15.9 5c2.5 0 4.6 2 4.6 4.9 0 4.7-6.5 9.1-8.5 10.4Z"/></svg>';
+var CHECK_SVG = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg>';
+
+/* ===== 필터 ===== */
+function applyFilters(){
+  var arr = LISTINGS.slice();
+  if(state.sido) arr = arr.filter(function(l){ return l.sido === state.sido; });
+  if(state.gu) arr = arr.filter(function(l){ return l.gu === state.gu; });
+  if(state.filter === "open"){
+    arr = arr.filter(function(l){ var k = getStatus(l).key; return k === "ongoing" || k === "soon"; });
+  } else if(state.filter !== "all"){
+    arr = arr.filter(function(l){ return l.type === state.filter; });
+  }
+  if(state.q.trim()){
+    var q = state.q.trim();
+    arr = arr.filter(function(l){
+      return l.name.indexOf(q) > -1 || l.addr.indexOf(q) > -1 || l.gu.indexOf(q) > -1 || l.sido.indexOf(q) > -1;
+    });
+  }
+  var order = { soon:0, ongoing:1, upcoming:2, closed:3 };
+  if(state.sort === "soon"){
+    arr.sort(function(a,b){
+      var oa = order[getStatus(a).key], ob = order[getStatus(b).key];
+      if(oa !== ob) return oa - ob;
+      return a.rEnd - b.rEnd;
+    });
+  } else if(state.sort === "fit" && hasProfile){
+    arr.sort(function(a,b){ return (computeFit(b).score) - (computeFit(a).score); });
+  } else if(state.sort === "new"){
+    arr.sort(function(a,b){ return b.noticeDate - a.noticeDate; });
+  } else if(state.sort === "price"){
+    arr.sort(function(a,b){ return priceKey(a) - priceKey(b); });
+  }
+  return arr;
+}
+
+/* ===== 카드 생성 ===== */
+function buildCard(l, opts){
+  opts = opts || {};
+  var st = getStatus(l);
+  var fit = computeFit(l);
+  var card = el("div", "card" + (st.key === "closed" ? " dim" : ""));
+
+  var top = el("div","card-top");
+  var badges = el("div","badges");
+  badges.appendChild(el("span","badge ag-" + l.agency, l.agency));
+  badges.appendChild(el("span","badge tp-" + l.type, l.type));
+  top.appendChild(badges);
+  top.appendChild(el("span","status " + st.cls, st.label));
+
+  if(opts.selectMode){
+    var chk = el("div","check" + (selectedIds.has(l.id) ? " on" : ""));
+    chk.innerHTML = CHECK_SVG;
+    top.appendChild(chk);
+  } else {
+    var hb = el("button","heart" + (favorites.has(l.id) ? " on" : ""));
+    hb.innerHTML = HEART_SVG;
+    hb.setAttribute("aria-label", favorites.has(l.id) ? "찜 취소" : "찜하기");
+    hb.addEventListener("click", function(ev){
+      ev.stopPropagation();
+      toggleFav(l.id);
+    });
+    top.appendChild(hb);
+  }
+  card.appendChild(top);
+
+  card.appendChild(el("h2", null, l.name));
+  card.appendChild(el("div","loc", l.addr));
+
+  var pr = el("div","price");
+  pr.appendChild(document.createTextNode(priceMain(l)));
+  var small = el("small", null, l.type === "매매" ? "분양가" : (l.type === "전세" ? "전세" : "월세"));
+  pr.appendChild(small);
+  card.appendChild(pr);
+
+  var meta = el("div","meta");
+  meta.appendChild(el("span", null, l.sizes.join("·") + "㎡"));
+  meta.appendChild(el("span", null, l.households + "세대"));
+  meta.appendChild(el("span", null, fmtDate(l.rStart) + " ~ " + fmtDate(l.rEnd)));
+  card.appendChild(meta);
+
+  if(fit){
+    var fr = el("div","fit-row");
+    var bg = el("div","fit-bg");
+    var fill = el("div","fit-fill");
+    fill.style.width = fit.score + "%";
+    fill.style.background = fitColor(fit.score);
+    bg.appendChild(fill);
+    fr.appendChild(bg);
+    var lab = el("div","fit-label", fit.label + " " + fit.score + "점");
+    lab.style.color = fitColor(fit.score);
+    fr.appendChild(lab);
+    card.appendChild(fr);
+  }
+
+  card.addEventListener("click", function(){
+    if(opts.selectMode){
+      if(selectedIds.has(l.id)) selectedIds.delete(l.id);
+      else selectedIds.add(l.id);
+      renderFav();
+    } else {
+      openDetail(l.id);
+    }
+  });
+  return card;
+}
+
+/* ===== 선택한 지역 칩 ===== */
+var X_SVG = '<svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+
+function renderRegionChips(){
+  saveRegion();
+  var box = $("activeRegion");
+  box.innerHTML = "";
+  if(!state.sido){ box.classList.remove("show"); return; }
+  box.classList.add("show");
+
+  function makeChip(label, onRemove){
+    var chip = el("span","rchip");
+    chip.appendChild(document.createTextNode(label));
+    var x = el("button");
+    x.type = "button";
+    x.innerHTML = X_SVG;
+    x.setAttribute("aria-label", label + " 해제");
+    x.addEventListener("click", function(ev){
+      ev.stopPropagation();
+      onRemove();
+    });
+    chip.appendChild(x);
+    return chip;
+  }
+
+  box.appendChild(makeChip(state.sido, function(){
+    state.sido = "";
+    state.gu = "";
+    $("sidoSelect").value = "";
+    refreshGuSelect();
+    renderRegionChips();
+    renderHome();
+    toast("지역 설정을 해제했어요");
+  }));
+
+  if(state.gu){
+    box.appendChild(makeChip(state.gu, function(){
+      state.gu = "";
+      $("guSelect").value = "";
+      renderRegionChips();
+      renderHome();
+      toast(state.sido + " 전체로 바꿨어요");
+    }));
+  }
+}
+
+/* ===== 홈 렌더 ===== */
+function renderHome(){
+  var listEl = $("list");
+  var emptyEl = $("emptyState");
+  var arr = applyFilters();
+  listEl.innerHTML = "";
+
+  var isFiltered = state.sido || state.gu || state.filter !== "all" || state.q.trim();
+  $("resetBtn").classList.toggle("show", !!isFiltered);
+
+  if(arr.length === 0){
+    emptyEl.style.display = "block";
+    $("resultCount").textContent = "";
+    return;
+  }
+  emptyEl.style.display = "none";
+
+  var where = state.gu ? (state.sido + " " + state.gu) : (state.sido || "전국");
+  $("resultCount").innerHTML = where + " · 총 <b>" + arr.length + "건</b>";
+
+  arr.forEach(function(l){ listEl.appendChild(buildCard(l)); });
+}
+
+/* ===== 찜 렌더 ===== */
+function renderFav(){
+  var listEl = $("favList");
+  var emptyEl = $("favEmpty");
+  var items = LISTINGS.filter(function(l){ return favorites.has(l.id); });
+  listEl.innerHTML = "";
+  emptyEl.style.display = items.length === 0 ? "block" : "none";
+  $("selToggle").style.display = items.length === 0 ? "none" : "block";
+
+  items.forEach(function(l){
+    listEl.appendChild(buildCard(l, { selectMode: selectMode }));
+  });
+  updateSelBar();
+}
+
+function updateSelBar(){
+  var bar = $("selBar");
+  var n = selectedIds.size;
+  if(selectMode && n > 0){
+    bar.classList.add("show");
+    $("selCount").textContent = n + "개 선택";
+  } else {
+    bar.classList.remove("show");
+  }
+}
+
+function updateFavDot(){
+  var dot = $("favDot");
+  var n = favorites.size;
+  if(n > 0){ dot.classList.add("show"); dot.textContent = n; }
+  else dot.classList.remove("show");
+}
+
+/* ===== 찜 토글 ===== */
+function toggleFav(id){
+  if(favorites.has(id)){ favorites.delete(id); toast("찜을 취소했어요"); }
+  else { favorites.add(id); toast("찜했어요"); }
+  saveFavorites();
+  updateFavDot();
+  renderHome();
+  if(currentPage === "fav") renderFav();
+  if($("detailOv").classList.contains("show")) openDetail(id);
+}
+
+var toastTimer;
+function toast(msg){
+  var t = $("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 1700);
+}
+
+/* ===== 상세 ===== */
+function openDetail(id){
+  var l = LISTINGS.filter(function(x){ return x.id === id; })[0];
+  if(!l) return;
+  var st = getStatus(l);
+  var fit = computeFit(l);
+  var sheet = $("detailSheet");
+  sheet.innerHTML = "";
+
+  sheet.appendChild(el("div","handle"));
+
+  var bd = el("div","d-badges");
+  bd.appendChild(el("span","badge ag-" + l.agency, l.agency));
+  bd.appendChild(el("span","badge tp-" + l.type, l.type));
+  bd.appendChild(el("span","status " + st.cls, st.label));
+  sheet.appendChild(bd);
+
+  sheet.appendChild(el("div","d-title", l.name));
+  sheet.appendChild(el("div","d-loc", l.addr));
+
+  var hb = el("div","highlight-box");
+  hb.appendChild(el("div","big", priceMain(l)));
+  hb.appendChild(el("div","cap", priceCaption(l)));
+  sheet.appendChild(hb);
+
+  if(fit){
+    var fd = el("div","fit-detail");
+    var hd = el("div","hd");
+    var b = el("b", null, fit.label);
+    hd.appendChild(b);
+    var sc = el("b", null, fit.score + "점");
+    sc.style.color = fitColor(fit.score);
+    hd.appendChild(sc);
+    fd.appendChild(hd);
+    var tags = el("div","tags");
+    fit.reasons.forEach(function(r){
+      tags.appendChild(el("span","tag " + (r.good ? "good" : "bad"), r.t));
+    });
+    fd.appendChild(tags);
+    sheet.appendChild(fd);
+  } else {
+    var nf = el("div","fit-detail");
+    var nb = el("div","hd");
+    nb.appendChild(el("b", null, "내 조건을 넣으면 적합도를 알려드려요"));
+    nf.appendChild(nb);
+    var goBtn = el("button","fav-btn","내 조건 입력하러 가기");
+    goBtn.style.marginTop = "4px";
+    goBtn.addEventListener("click", function(){
+      $("detailOv").classList.remove("show");
+      openProfile();
+    });
+    nf.appendChild(goBtn);
+    sheet.appendChild(nf);
+  }
+
+  function section(title, rows){
+    var s = el("div","d-sec");
+    s.appendChild(el("h3", null, title));
+    rows.forEach(function(r){
+      var row = el("div","d-row");
+      row.appendChild(el("span","k", r[0]));
+      row.appendChild(el("span","v", r[1]));
+      s.appendChild(row);
+    });
+    sheet.appendChild(s);
+  }
+
+  var costRows = [["공급 유형", l.type]];
+  if(l.type === "매매"){
+    costRows.push(["최저 분양가", l.priceMin.toLocaleString() + "만원 (" + eok(l.priceMin) + ")"]);
+    costRows.push(["최고 분양가", l.priceMax.toLocaleString() + "만원 (" + eok(l.priceMax) + ")"]);
+    costRows.push(["계약금(10% 가정)", Math.round(l.priceMin * 0.1).toLocaleString() + "만원부터"]);
+  } else if(l.type === "전세"){
+    costRows.push(["전세 보증금", l.deposit.toLocaleString() + "만원 (" + eok(l.deposit) + ")"]);
+    costRows.push(["월 납부액", "없음 (순수 전세)"]);
+  } else {
+    costRows.push(["보증금", l.deposit.toLocaleString() + "만원"]);
+    costRows.push(["월 임대료", l.rent + "만원"]);
+    costRows.push(["연간 부담액", (l.rent * 12).toLocaleString() + "만원"]);
+  }
+  section("비용", costRows);
+
+  section("공급 정보", [
+    ["전용면적", l.sizes.join(", ") + "㎡"],
+    ["공급 세대수", l.households.toLocaleString() + "세대"],
+    ["공급 기관", l.agency],
+    ["특별공급", l.special.length ? l.special.join(", ") : "해당 없음"]
+  ]);
+
+  var left = Math.ceil((l.rEnd - today)/86400000);
+  var leftTxt = st.key === "closed" ? "마감됨" : (st.key === "upcoming" ? "접수 전" : "D-" + left);
+  section("일정", [
+    ["모집공고일", fmtDate(l.noticeDate)],
+    ["청약 접수", fmtDate(l.rStart) + " ~ " + fmtDate(l.rEnd)],
+    ["남은 기간", leftTxt],
+    ["당첨자 발표", fmtDate(l.winDate)]
+  ]);
+
+  var a = el("a","link-btn","청약 사이트에서 신청하기");
+  a.href = l.link;
+  a.target = "_blank";
+  a.rel = "noopener";
+  sheet.appendChild(a);
+
+  var fb = el("button","fav-btn", favorites.has(l.id) ? "찜 취소하기" : "찜해두기");
+  fb.addEventListener("click", function(){ toggleFav(l.id); });
+  sheet.appendChild(fb);
+
+  $("detailOv").classList.add("show");
+  sheet.scrollTop = 0;
+}
+
+/* ===== 프로필 시트 ===== */
+function buildSeg(containerId, options, current, onPick){
+  var c = $(containerId);
+  c.innerHTML = "";
+  options.forEach(function(o){
+    var b = el("button", o.v === current ? "on" : null, o.l);
+    b.type = "button";
+    b.addEventListener("click", function(){ onPick(o.v); renderProfile(); });
+    c.appendChild(b);
+  });
+}
+function buildMulti(containerId, labels, arr, onToggle){
+  var c = $(containerId);
+  c.innerHTML = "";
+  labels.forEach(function(lb){
+    var b = el("button", arr.indexOf(lb) > -1 ? "on" : null, lb);
+    b.type = "button";
+    b.addEventListener("click", function(){ onToggle(lb); renderProfile(); });
+    c.appendChild(b);
+  });
+}
+
+function renderProfile(){
+  buildSeg("segNohouse", NOHOUSE_OPT, profile.nohouse, function(v){ profile.nohouse = v; });
+  buildSeg("segFamily", FAMILY_OPT, profile.family, function(v){ profile.family = v; });
+  buildMulti("segType", TYPES, profile.types, function(k){
+    var i = profile.types.indexOf(k);
+    if(i > -1) profile.types.splice(i,1); else profile.types.push(k);
+  });
+  buildMulti("segSpecial", SPECIALS, profile.special, function(k){
+    var i = profile.special.indexOf(k);
+    if(i > -1) profile.special.splice(i,1); else profile.special.push(k);
+  });
+
+  $("payPer").value = profile.payPer || "";
+  $("payCount").value = profile.payCount || "";
+  updateTotalPay();
+  $("sizeMin").value = profile.sizeMin != null ? profile.sizeMin : "";
+  $("sizeMax").value = profile.sizeMax != null ? profile.sizeMax : "";
+  $("budgetRange").value = profile.budget;
+  $("budgetVal").textContent = (profile.budget/10000).toFixed(1) + "억원";
+
+  var g = gajeom();
+  $("liveScore").innerHTML = g.total + '<span>/84점</span>';
+  $("scoreBrk").innerHTML = "무주택 " + g.nh + " · 부양가족 " + g.fam + "<br/>납입 " + g.acc + "점";
+}
+
+function updateTotalPay(){
+  var info = payInfo();
+  var v = info.rawTotal;
+  var text = (v >= 10000 ? (v/10000).toFixed(1) + "억원" : v.toLocaleString() + "만원");
+  if(info.capped && info.rawTotal !== info.recognizedTotal){
+    text += " (가점 인정 " + info.recognizedTotal.toLocaleString() + "만원)";
+  }
+  $("totalPayVal").textContent = text;
+  var g = gajeom();
+  $("liveScore").innerHTML = g.total + '<span>/84점</span>';
+  $("scoreBrk").innerHTML = "무주택 " + g.nh + " · 부양가족 " + g.fam + "<br/>납입 " + g.acc + "점";
+}
+
+function openProfile(){
+  renderProfile();
+  $("profileOv").classList.add("show");
+}
+
+/* ===== 지역 셀렉트 ===== */
+function initRegionSelects(){
+  var sido = $("sidoSelect");
+  sido.innerHTML = "";
+  var optAll = el("option", null, "전국");
+  optAll.value = "";
+  sido.appendChild(optAll);
+  Object.keys(REGIONS).forEach(function(s){
+    var o = el("option", null, s);
+    o.value = s;
+    sido.appendChild(o);
+  });
+  refreshGuSelect();
+}
+function refreshGuSelect(){
+  var gu = $("guSelect");
+  gu.innerHTML = "";
+  if(!state.sido){
+    var o = el("option", null, "시·군·구 전체");
+    o.value = "";
+    gu.appendChild(o);
+    gu.disabled = true;
+    return;
+  }
+  gu.disabled = false;
+  var all = el("option", null, state.sido + " 전체");
+  all.value = "";
+  gu.appendChild(all);
+  (REGIONS[state.sido] || []).forEach(function(g){
+    var o = el("option", null, g);
+    o.value = g;
+    gu.appendChild(o);
+  });
+  gu.value = state.gu;
+}
+
+/* ===== 이벤트 바인딩 ===== */
+function bindEvents(){
+  $("sidoSelect").addEventListener("change", function(e){
+    state.sido = e.target.value;
+    state.gu = "";
+    refreshGuSelect();
+    renderRegionChips();
+    renderHome();
+  });
+  $("guSelect").addEventListener("change", function(e){
+    state.gu = e.target.value;
+    renderRegionChips();
+    renderHome();
+  });
+
+  $("searchInput").addEventListener("input", function(e){
+    state.q = e.target.value;
+    $("clearSearch").classList.toggle("show", !!e.target.value);
+    renderHome();
+  });
+  $("clearSearch").addEventListener("click", function(){
+    state.q = "";
+    $("searchInput").value = "";
+    $("clearSearch").classList.remove("show");
+    renderHome();
+  });
+
+  $("filterChips").addEventListener("click", function(e){
+    var btn = e.target.closest(".chip");
+    if(!btn) return;
+    $("filterChips").querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
+    btn.classList.add("active");
+    state.filter = btn.dataset.filter;
+    renderHome();
+  });
+
+  $("sortChips").addEventListener("click", function(e){
+    var btn = e.target.closest(".chip");
+    if(!btn || btn.disabled) return;
+    $("sortChips").querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
+    btn.classList.add("active");
+    state.sort = btn.dataset.sort;
+    renderHome();
+  });
+
+  function resetFilters(){
+    state.sido = ""; state.gu = ""; state.filter = "all"; state.q = "";
+    $("sidoSelect").value = "";
+    refreshGuSelect();
+    renderRegionChips();
+    $("searchInput").value = "";
+    $("clearSearch").classList.remove("show");
+    $("filterChips").querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
+    $("filterChips").querySelector('[data-filter="all"]').classList.add("active");
+    renderHome();
+    toast("필터를 초기화했어요");
+  }
+  $("resetBtn").addEventListener("click", resetFilters);
+  $("emptyResetBtn").addEventListener("click", resetFilters);
+
+  $("openProfileBtn").addEventListener("click", openProfile);
+
+  $("profileOv").addEventListener("click", function(e){
+    if(e.target.id === "profileOv") e.currentTarget.classList.remove("show");
+  });
+  $("detailOv").addEventListener("click", function(e){
+    if(e.target.id === "detailOv") e.currentTarget.classList.remove("show");
+  });
+
+  $("budgetRange").addEventListener("input", function(e){
+    profile.budget = Number(e.target.value);
+    $("budgetVal").textContent = (profile.budget/10000).toFixed(1) + "억원";
+  });
+  $("payPer").addEventListener("input", function(e){
+    profile.payPer = Number(e.target.value) || 0;
+    updateTotalPay();
+  });
+  $("payCount").addEventListener("input", function(e){
+    profile.payCount = Number(e.target.value) || 0;
+    updateTotalPay();
+  });
+  $("sizeMin").addEventListener("input", function(e){
+    profile.sizeMin = e.target.value === "" ? null : e.target.value;
+  });
+  $("sizeMax").addEventListener("input", function(e){
+    profile.sizeMax = e.target.value === "" ? null : e.target.value;
+  });
+
+  $("saveProfile").addEventListener("click", function(){
+    saveProfile();
+    $("profileOv").classList.remove("show");
+    $("fitChip").disabled = false;
+    var g = gajeom();
+    $("scorePill").style.display = "inline-block";
+    $("scorePill").textContent = g.total + "점";
+    $("meBtnLabel").textContent = "내 조건";
+    toast("저장했어요. 적합도를 확인해보세요");
+    renderHome();
+    if(currentPage === "fav") renderFav();
+  });
+
+  $("selToggle").addEventListener("click", function(){
+    selectMode = !selectMode;
+    selectedIds.clear();
+    this.textContent = selectMode ? "취소" : "선택";
+    renderFav();
+  });
+  $("bulkDelete").addEventListener("click", function(){
+    if(selectedIds.size === 0) return;
+    var n = selectedIds.size;
+    selectedIds.forEach(function(id){ favorites.delete(id); });
+    saveFavorites();
+    selectedIds.clear();
+    selectMode = false;
+    $("selToggle").textContent = "선택";
+    updateFavDot();
+    renderFav();
+    renderHome();
+    toast(n + "개를 찜 목록에서 뺐어요");
+  });
+
+  document.querySelectorAll(".gnb-item").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      if(btn.classList.contains("active")) return;
+      document.querySelectorAll(".gnb-item").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      btn.classList.remove("bump");
+      void btn.offsetWidth;
+      btn.classList.add("bump");
+      setTimeout(function(){ btn.classList.remove("bump"); }, 450);
+
+      currentPage = btn.dataset.page;
+      $("homePage").classList.toggle("show", currentPage === "home");
+      $("favPage").classList.toggle("show", currentPage === "fav");
+      window.scrollTo(0,0);
+
+      if(currentPage === "fav"){
+        renderFav();
+      } else {
+        selectMode = false;
+        selectedIds.clear();
+        $("selToggle").textContent = "선택";
+        $("selBar").classList.remove("show");
+      }
+    });
+  });
+}
+
+/* ===== 초기화 ===== */
+(async function init(){
+  await loadListings();
+  loadState();
+  initRegionSelects();
+  $("sidoSelect").value = state.sido;
+  refreshGuSelect();
+  renderRegionChips();
+  bindEvents();
+  if(hasProfile){
+    $("fitChip").disabled = false;
+    var g = gajeom();
+    $("scorePill").style.display = "inline-block";
+    $("scorePill").textContent = g.total + "점";
+  }
+  updateFavDot();
+  renderHome();
+  updateBrandSub();
+})();
+
+function updateBrandSub(){
+  var el = $("brandSub");
+  if(dataSource === "live" && lastUpdatedAt){
+    var m = lastUpdatedAt.getMonth()+1, d = lastUpdatedAt.getDate();
+    var hh = String(lastUpdatedAt.getHours()).padStart(2,"0");
+    el.textContent = m + "." + String(d).padStart(2,"0") + " " + hh + "시 업데이트";
+  } else {
+    el.textContent = "예시 데이터 (아직 실 데이터 연결 전)";
+  }
+}
+
+/* PWA: 서비스워커 등록 (오프라인에서도 앱 골격이 뜨도록) */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("./sw.js").catch(function(){ /* 서비스워커 미지원 환경은 무시 */ });
+  });
+}
+</script>
+</body>
+</html>
