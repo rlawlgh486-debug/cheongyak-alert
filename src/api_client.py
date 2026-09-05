@@ -10,6 +10,8 @@ from config import (
     APT_DETAIL_ENDPOINT, APT_MODEL_ENDPOINT,
     URBTY_DETAIL_ENDPOINT, URBTY_MODEL_ENDPOINT,
     RENT_DETAIL_ENDPOINT, RENT_MODEL_ENDPOINT,
+    REMNDR_DETAIL_ENDPOINT, REMNDR_MODEL_ENDPOINT,
+    OPT_DETAIL_ENDPOINT, OPT_MODEL_ENDPOINT,
     SIDO_NORMALIZE, SPECIAL_FIELD_LABELS_APT, SPECIAL_FIELD_LABELS_RENT,
     URBTY_RENTAL_CODES, LOG_FILE,
 )
@@ -301,6 +303,125 @@ def _enrich_urbty(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     }
 
 
+# ───────────────────── APT 잔여세대/무순위 (매매) ─────────────────────
+
+def _enrich_remndr(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    house_no = notice.get("HOUSE_MANAGE_NO", "")
+    pblanc_no = notice.get("PBLANC_NO", "")
+    name = notice.get("HOUSE_NM", "")
+    r_start = notice.get("SUBSCRPT_RCEPT_BGNDE") or ""
+    r_end = notice.get("SUBSCRPT_RCEPT_ENDDE") or ""
+    notice_date = notice.get("RCRIT_PBLANC_DE") or ""
+    win_date = notice.get("PRZWNER_PRESNATN_DE") or r_end
+
+    if not (house_no and pblanc_no and name and r_start and r_end):
+        return None
+
+    rows = _fetch_model_rows(REMNDR_MODEL_ENDPOINT, house_no, pblanc_no)
+    time.sleep(0.15)
+
+    sizes, prices = [], []
+    households = 0
+    for row in rows:
+        area = _to_float(row.get("SUPLY_AR"))
+        if area:
+            sizes.append(round(area))
+        price = _to_int(row.get("LTTOT_TOP_AMOUNT"))
+        if price:
+            prices.append(price)
+        households += _to_int(row.get("SUPLY_HSHLDCO")) + _to_int(row.get("SPSPLY_HSHLDCO"))
+
+    if not sizes:
+        sizes = [84]
+
+    sido, gu = _split_address(notice.get("HSSPLY_ADRES", ""))
+
+    return {
+        "id": f"remndr_{house_no}_{pblanc_no}",
+        "name": name,
+        "agency": _agency_from_names(name, notice.get("BSNS_MBY_NM", "")),
+        "sido": sido, "gu": gu,
+        "addr": notice.get("HSSPLY_ADRES", f"{sido} {gu}".strip()),
+        "sizes": sorted(set(sizes)),
+        "type": "매매",
+        "priceMin": min(prices) if prices else 0,
+        "priceMax": max(prices) if prices else 0,
+        "deposit": 0, "rent": 0,
+        "households": households,
+        "special": [],  # 무순위/잔여세대는 특별공급 유형 구분이 없음
+        "link": notice.get("PBLANC_URL") or notice.get("HMPG_ADRES") or "https://www.applyhome.co.kr/",
+        "rStart": r_start, "rEnd": r_end,
+        "winDate": win_date, "noticeDate": notice_date,
+    }
+
+
+# ───────────────────── 임의공급 (매매) ─────────────────────
+
+_HOUSE_TY_SIZE_RE = re.compile(r"(\d+)")
+
+
+def _size_from_house_ty(house_ty: str) -> Optional[int]:
+    """'059.9800A' 같은 주택형 문자열에서 앞의 숫자(전용면적)를 추출."""
+    if not house_ty:
+        return None
+    m = _HOUSE_TY_SIZE_RE.match(house_ty.strip())
+    if not m:
+        return None
+    val = _to_float(m.group(1))
+    return round(val) if val else None
+
+
+def _enrich_opt(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    house_no = notice.get("HOUSE_MANAGE_NO", "")
+    pblanc_no = notice.get("PBLANC_NO", "")
+    name = notice.get("HOUSE_NM", "")
+    r_start = notice.get("SUBSCRPT_RCEPT_BGNDE") or ""
+    r_end = notice.get("SUBSCRPT_RCEPT_ENDDE") or ""
+    notice_date = notice.get("RCRIT_PBLANC_DE") or ""
+    win_date = notice.get("PRZWNER_PRESNATN_DE") or r_end
+
+    if not (house_no and pblanc_no and name and r_start and r_end):
+        return None
+
+    rows = _fetch_model_rows(OPT_MODEL_ENDPOINT, house_no, pblanc_no)
+    time.sleep(0.15)
+
+    sizes, prices = [], []
+    households = 0
+    for row in rows:
+        # 이 API는 전용면적(SUPLY_AR) 필드가 없어 주택형 문자열(HOUSE_TY)에서 추출
+        size = _size_from_house_ty(row.get("HOUSE_TY", ""))
+        if size:
+            sizes.append(size)
+        price = _to_int(row.get("LTTOT_TOP_AMOUNT"))
+        if price:
+            prices.append(price)
+        households += _to_int(row.get("SUPLY_HSHLDCO"))
+
+    if not sizes:
+        sizes = [84]
+
+    sido, gu = _split_address(notice.get("HSSPLY_ADRES", ""))
+
+    return {
+        "id": f"opt_{house_no}_{pblanc_no}",
+        "name": name,
+        "agency": _agency_from_names(name, notice.get("BSNS_MBY_NM", "")),
+        "sido": sido, "gu": gu,
+        "addr": notice.get("HSSPLY_ADRES", f"{sido} {gu}".strip()),
+        "sizes": sorted(set(sizes)),
+        "type": "매매",
+        "priceMin": min(prices) if prices else 0,
+        "priceMax": max(prices) if prices else 0,
+        "deposit": 0, "rent": 0,
+        "households": households,
+        "special": [],  # 임의공급은 특별공급 유형 구분이 없음
+        "link": notice.get("PBLANC_URL") or notice.get("HMPG_ADRES") or "https://www.applyhome.co.kr/",
+        "rStart": r_start, "rEnd": r_end,
+        "winDate": win_date, "noticeDate": notice_date,
+    }
+
+
 def _collect(endpoint: str, label: str, days: int, enrich_fn) -> List[Dict[str, Any]]:
     notices = _fetch_list(endpoint, days, label)
     results = []
@@ -328,6 +449,8 @@ def get_recent_listings(days: int = 14) -> List[Dict[str, Any]]:
     all_results += _collect(APT_DETAIL_ENDPOINT, "APT/매매", days, _enrich_apt)
     all_results += _collect(RENT_DETAIL_ENDPOINT, "공공지원민간임대/전세", days, _enrich_rent)
     all_results += _collect(URBTY_DETAIL_ENDPOINT, "오피스텔등/매매·월세", days, _enrich_urbty)
+    all_results += _collect(REMNDR_DETAIL_ENDPOINT, "잔여세대·무순위/매매", days, _enrich_remndr)
+    all_results += _collect(OPT_DETAIL_ENDPOINT, "임의공급/매매", days, _enrich_opt)
 
     logger.info(f"전체 소스 합산 완료: {len(all_results)}건")
     return all_results
