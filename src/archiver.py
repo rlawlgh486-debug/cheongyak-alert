@@ -32,7 +32,7 @@ class ArchiveManager:
             logger.warning(f"아카이브 로드 실패: {e}")
         
         return {
-            "listings": {},  # noticeNum -> listing data
+            "listings": {},  # id -> listing data
             "last_update": datetime.now().isoformat(),
             "total_archived": 0,
         }
@@ -62,7 +62,7 @@ class ArchiveManager:
         new = []
         
         for listing in current_listings:
-            notice_num = listing.get("noticeNum")
+            notice_num = listing.get("id")
             if notice_num not in archived:
                 new.append(listing)
         
@@ -73,7 +73,7 @@ class ArchiveManager:
         """공고를 아카이브에 추가"""
         count = 0
         for listing in listings:
-            notice_num = listing.get("noticeNum")
+            notice_num = listing.get("id")
             if notice_num:
                 self.archive["listings"][notice_num] = {
                     **listing,
