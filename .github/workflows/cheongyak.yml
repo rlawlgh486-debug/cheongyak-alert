@@ -1,0 +1,45 @@
+name: 청약 공고 자동 수집
+
+on:
+  schedule:
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 환경 설정
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 의존성 설치
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: 청약 공고 수집
+        env:
+          PUBLIC_DATA_API_KEY: ${{ secrets.PUBLIC_DATA_API_KEY }}
+        run: |
+          python src/main.py
+
+      - name: 아카이브 데이터 커밋
+        if: always()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 청약 공고 아카이브 업데이트 (${{ github.run_number }})"
+
+      - name: 커밋 푸시
+        if: always()
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
