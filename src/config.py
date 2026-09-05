@@ -25,6 +25,14 @@ URBTY_MODEL_ENDPOINT = f"{API_HOST}/getUrbtyOfctlLttotPblancMdl"
 RENT_DETAIL_ENDPOINT = f"{API_HOST}/getPblPvtRentLttotPblancDetail"
 RENT_MODEL_ENDPOINT = f"{API_HOST}/getPblPvtRentLttotPblancMdl"
 
+# APT 잔여세대/무순위 (=매매) — 공고 목록 / 주택형별 상세
+REMNDR_DETAIL_ENDPOINT = f"{API_HOST}/getRemndrLttotPblancDetail"
+REMNDR_MODEL_ENDPOINT = f"{API_HOST}/getRemndrLttotPblancMdl"
+
+# 임의공급 (=매매) — 공고 목록 / 주택형별 상세
+OPT_DETAIL_ENDPOINT = f"{API_HOST}/getOPTLttotPblancDetail"
+OPT_MODEL_ENDPOINT = f"{API_HOST}/getOPTLttotPblancMdl"
+
 # 시/도 전체 명칭 -> 앱에서 쓰는 축약 명칭
 SIDO_NORMALIZE = {
     "서울특별시": "서울", "부산광역시": "부산", "대구광역시": "대구",
