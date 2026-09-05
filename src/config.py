@@ -12,10 +12,18 @@ DATA_DIR.mkdir(exist_ok=True)
 API_KEY = os.getenv("PUBLIC_DATA_API_KEY", "")
 
 API_HOST = "https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1"
-# APT 분양정보 (=매매) — 공고 목록
+
+# APT 분양정보 (=매매) — 공고 목록 / 주택형별 상세(분양가·평형·특별공급)
 APT_DETAIL_ENDPOINT = f"{API_HOST}/getAPTLttotPblancDetail"
-# APT 분양정보 — 주택형별 상세 (분양가/평형/특별공급 세대수)
 APT_MODEL_ENDPOINT = f"{API_HOST}/getAPTLttotPblancMdl"
+
+# 오피스텔/도시형/민간임대/생활숙박시설 — 공고 목록 / 주택형별 상세
+URBTY_DETAIL_ENDPOINT = f"{API_HOST}/getUrbtyOfctlLttotPblancDetail"
+URBTY_MODEL_ENDPOINT = f"{API_HOST}/getUrbtyOfctlLttotPblancMdl"
+
+# 공공지원 민간임대 (=전세) — 공고 목록 / 주택형별 상세
+RENT_DETAIL_ENDPOINT = f"{API_HOST}/getPblPvtRentLttotPblancDetail"
+RENT_MODEL_ENDPOINT = f"{API_HOST}/getPblPvtRentLttotPblancMdl"
 
 # 시/도 전체 명칭 -> 앱에서 쓰는 축약 명칭
 SIDO_NORMALIZE = {
@@ -28,14 +36,25 @@ SIDO_NORMALIZE = {
     "경상북도": "경북", "경상남도": "경남", "제주특별자치도": "제주", "제주도": "제주",
 }
 
-# 특별공급 세대수 필드 -> 표시 라벨
-SPECIAL_FIELD_LABELS = {
+# 특별공급 세대수 필드 -> 표시 라벨 (APT 분양)
+SPECIAL_FIELD_LABELS_APT = {
     "NWWDS_HSHLDCO": "신혼부부",
     "MNYCH_HSHLDCO": "다자녀가구",
     "LFE_FRST_HSHLDCO": "생애최초",
     "OLD_PARNTS_SUPORT_HSHLDCO": "노부모부양",
     "INSTT_RECOMEND_HSHLDCO": "기관추천",
 }
+
+# 특별공급 세대수 필드 -> 표시 라벨 (공공지원 민간임대 = 전세)
+SPECIAL_FIELD_LABELS_RENT = {
+    "SPSPLY_YGMN_HSHLDCO": "청년",
+    "SPSPLY_NEW_MRRG_HSHLDCO": "신혼부부",
+    "SPSPLY_AGED_HSHLDCO": "고령자",
+}
+
+# 오피스텔/도시형/민간임대/생활숙박시설 주택구분코드
+# 0201:도시형생활주택(매매), 0202:오피스텔(매매), 0203:민간임대(월세), 0204:생활형숙박시설(매매)
+URBTY_RENTAL_CODES = {"0203", "0204"}
 
 # 로그
 LOG_FILE = BASE_DIR / "cheongyak.log"
