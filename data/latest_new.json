@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "id": "opt_2026940191_2026940191",
+    "name": "고덕신도시 아테라 A-63블록 공공분양주택",
+    "agency": "LH",
+    "sido": "경기",
+    "gu": "평택시",
+    "addr": "경기도 평택시 고덕동, 고덕면 일원(평택고덕국제화계획지구 내 A-63BL)",
+    "sizes": [
+      74,
+      84
+    ],
+    "type": "매매",
+    "priceMin": 47552,
+    "priceMax": 53908,
+    "deposit": 0,
+    "rent": 0,
+    "households": 49,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940191&pblancNo=2026940191",
+    "rStart": "20260909",
+    "rEnd": "20260914",
+    "winDate": "20260917",
+    "noticeDate": "20260907"
+  },
+  {
+    "id": "opt_2026940187_2026940187",
+    "name": "풍무역세권 수자인 그라센트 2차(3차)",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "김포시",
+    "addr": "경기도 김포시 풍무역세권도시개발사업 B1BL(김포시 사우동 167-1번지)",
+    "sizes": [
+      84,
+      105
+    ],
+    "type": "매매",
+    "priceMin": 71150,
+    "priceMax": 82530,
+    "deposit": 0,
+    "rent": 0,
+    "households": 8,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940187&pblancNo=2026940187",
+    "rStart": "20260909",
+    "rEnd": "20260910",
+    "winDate": "20260915",
+    "noticeDate": "20260907"
+  }
+]
