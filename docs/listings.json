@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-07T21:07:41.343492+00:00",
-  "count": 268,
+  "updatedAt": "2026-09-08T21:07:03.678927+00:00",
+  "count": 274,
   "items": [
     {
       "id": "2026000426_2026000426",
@@ -6676,6 +6676,145 @@
       "rEnd": "20260910",
       "winDate": "20260915",
       "noticeDate": "20260907"
+    },
+    {
+      "id": "remndr_2026910237_2026910237",
+      "name": "제일풍경채 검단Ⅳ",
+      "agency": "민간",
+      "sido": "인천",
+      "gu": "검단구",
+      "addr": "인천광역시 검단구 불로동 검단신도시 AA22블록",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 67800,
+      "priceMax": 67800,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910237&pblancNo=2026910237",
+      "rStart": "2026-09-14",
+      "rEnd": "2026-09-14",
+      "winDate": "2026-09-17",
+      "noticeDate": "2026-09-08"
+    },
+    {
+      "id": "remndr_2026910235_2026910235",
+      "name": "청계 노르웨이숲(12차)",
+      "agency": "민간",
+      "sido": "서울",
+      "gu": "중구",
+      "addr": "서울특별시 중구 황학동 1756번지 일원",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 76112,
+      "priceMax": 76112,
+      "deposit": 0,
+      "rent": 0,
+      "households": 13,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910235&pblancNo=2026910235",
+      "rStart": "2026-09-14",
+      "rEnd": "2026-09-14",
+      "winDate": "2026-09-17",
+      "noticeDate": "2026-09-08"
+    },
+    {
+      "id": "remndr_2026910233_2026910233",
+      "name": "드파인 아르티아(2차)",
+      "agency": "민간",
+      "sido": "서울",
+      "gu": "동작구",
+      "addr": "서울특별시 동작구 노량진동 312-75번지 일대",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 266000,
+      "priceMax": 306000,
+      "deposit": 0,
+      "rent": 0,
+      "households": 7,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910233&pblancNo=2026910233",
+      "rStart": "2026-09-14",
+      "rEnd": "2026-09-14",
+      "winDate": "2026-09-17",
+      "noticeDate": "2026-09-08"
+    },
+    {
+      "id": "opt_2026940197_2026940197",
+      "name": "수원역 아너스빌 타임원",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "수원시",
+      "addr": "경기도 수원시 권선구 평동 135-1번지 일원",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 76350,
+      "priceMax": 77200,
+      "deposit": 0,
+      "rent": 0,
+      "households": 10,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940197&pblancNo=2026940197",
+      "rStart": "20260910",
+      "rEnd": "20260911",
+      "winDate": "20260916",
+      "noticeDate": "20260908"
+    },
+    {
+      "id": "opt_2026940196_2026940196",
+      "name": "의정부역 센트럴 아이파크 (4차)",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "의정부시",
+      "addr": "경기도 의정부시 의정부동 253-19번지 일원",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 79600,
+      "priceMax": 82600,
+      "deposit": 0,
+      "rent": 0,
+      "households": 11,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940196&pblancNo=2026940196",
+      "rStart": "20260911",
+      "rEnd": "20260911",
+      "winDate": "20260916",
+      "noticeDate": "20260908"
+    },
+    {
+      "id": "opt_2026940186_2026940186",
+      "name": "야목역 서희스타힐스 그랜드힐(조합원 취소분)",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "화성시",
+      "addr": "경기도 화성시 효행구 비봉면 구포리 614-18번지 일원",
+      "sizes": [
+        59,
+        84
+      ],
+      "type": "매매",
+      "priceMin": 41900,
+      "priceMax": 57600,
+      "deposit": 0,
+      "rent": 0,
+      "households": 23,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940186&pblancNo=2026940186",
+      "rStart": "20260910",
+      "rEnd": "20260915",
+      "winDate": "20260918",
+      "noticeDate": "20260908"
     }
   ]
 }
