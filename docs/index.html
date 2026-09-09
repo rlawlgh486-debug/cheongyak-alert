@@ -6,16 +6,18 @@
 <meta name="color-scheme" content="light only" />
 <meta name="theme-color" content="#FFFFFF" />
 <meta name="supported-color-schemes" content="light" />
-<title>청약모아</title>
+<title>Wishome</title>
 
 <!-- PWA: 아이폰 홈 화면에 앱처럼 추가하기 위한 설정 -->
 <link rel="manifest" href="./manifest.json" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="청약모아" />
+<meta name="apple-mobile-web-app-title" content="Wishome" />
 <meta name="mobile-web-app-capable" content="yes" />
-<link rel="apple-touch-icon" href="./icons/icon-192.png" />
-<link rel="icon" href="./icons/icon-192.png" />
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+<link rel="icon" type="image/x-icon" href="./favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16.png" />
 <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 <style>
@@ -142,6 +144,7 @@
   .badge.tp-매매{ background:#FFF1E8; color:#C2410C; }
   .badge.tp-전세{ background:#E8F3FF; color:#0052CC; }
   .badge.tp-월세{ background:#EAF7EE; color:#1C7C43; }
+  .badge.tp-확인필요{ background:#F2F4F6; color:#8B95A1; }
   .status{ font-size:11px; font-weight:800; padding:3px 8px; border-radius:6px; margin-left:auto; }
   .status.ongoing{ background:var(--green-weak); color:#00A876; }
   .status.soon{ background:var(--red-weak); color:var(--red); }
@@ -324,7 +327,7 @@
     <header>
       <div class="header-row">
         <div class="brand">
-          <h1>청약모아</h1>
+          <h1>Wishome</h1>
           <p id="brandSub">전국 청약 공고를 한 곳에서</p>
         </div>
         <button class="me-btn" id="openProfileBtn">
@@ -563,6 +566,7 @@ function jsonToListings(items){
       sizes: o.sizes, type: o.type,
       priceMin: o.priceMin, priceMax: o.priceMax, deposit: o.deposit, rent: o.rent,
       households: o.households, special: o.special || [], link: o.link,
+      verifiedLink: o.verifiedLink !== false,
       rStart: new Date(o.rStart), rEnd: new Date(o.rEnd),
       winDate: new Date(o.winDate), noticeDate: new Date(o.noticeDate)
     };
@@ -596,6 +600,7 @@ var FAMILY_OPT = [{v:0,l:"0명"},{v:1,l:"1명"},{v:2,l:"2명"},{v:3,l:"3명"},{v
 
 /* ===== 상태 ===== */
 function getStatus(l){
+  if(l.type === "확인필요") return {key:"info", label:"공고 등록", cls:"upcoming"};
   if(today < l.rStart) return {key:"upcoming", label:"접수 예정", cls:"upcoming"};
   if(today > l.rEnd) return {key:"closed", label:"접수 마감", cls:"closed"};
   var left = Math.ceil((l.rEnd - today)/86400000);
@@ -609,6 +614,7 @@ function eok(man){
   return (v >= 10 ? v.toFixed(0) : v.toFixed(1).replace(/\.0$/,"")) + "억";
 }
 function priceMain(l){
+  if(l.type === "확인필요") return "SH 홈페이지에서 확인해요";
   if(l.type === "매매"){
     if(l.priceMin === l.priceMax) return eok(l.priceMin);
     return eok(l.priceMin) + " ~ " + eok(l.priceMax);
@@ -617,12 +623,14 @@ function priceMain(l){
   return "보증금 " + l.deposit.toLocaleString() + "만원 / 월 " + l.rent + "만원";
 }
 function priceCaption(l){
+  if(l.type === "확인필요") return "정확한 조건은 공식 페이지 참고";
   if(l.type === "매매") return "분양가 (최저~최고)";
   if(l.type === "전세") return "전세 보증금";
   return "월세 조건";
 }
-/* 비교·정렬용 대표 금액 (만원) */
+/* 비교·정렬용 대표 금액 (만원). 확인필요 항목은 가격순 정렬에서 맨 뒤로 밀림 */
 function priceKey(l){
+  if(l.type === "확인필요") return Infinity;
   if(l.type === "매매") return l.priceMin;
   if(l.type === "전세") return l.deposit;
   return l.deposit + l.rent * 100;
@@ -695,6 +703,7 @@ function gajeom(){
 /* ===== 적합도 ===== */
 function computeFit(l){
   if(!hasProfile) return null;
+  if(l.type === "확인필요") return null; // 가격·평형 정보가 없어 적합도 계산 불가
   var score = 0;
   var reasons = [];
 
@@ -817,7 +826,7 @@ function applyFilters(){
       return l.name.indexOf(q) > -1 || l.addr.indexOf(q) > -1 || l.gu.indexOf(q) > -1 || l.sido.indexOf(q) > -1;
     });
   }
-  var order = { soon:0, ongoing:1, upcoming:2, closed:3 };
+  var order = { soon:0, ongoing:1, upcoming:2, info:2, closed:3 };
   var innerCompare;
   if(state.sort === "soon"){
     innerCompare = function(a,b){
@@ -853,7 +862,8 @@ function buildCard(l, opts){
   var top = el("div","card-top");
   var badges = el("div","badges");
   badges.appendChild(el("span","badge ag-" + l.agency, l.agency));
-  badges.appendChild(el("span","badge tp-" + l.type, l.type));
+  var typeLabel = l.type === "확인필요" ? "공고" : l.type;
+  badges.appendChild(el("span","badge tp-" + l.type, typeLabel));
   top.appendChild(badges);
   top.appendChild(el("span","status " + st.cls, st.label));
 
@@ -878,14 +888,20 @@ function buildCard(l, opts){
 
   var pr = el("div","price");
   pr.appendChild(document.createTextNode(priceMain(l)));
-  var small = el("small", null, l.type === "매매" ? "분양가" : (l.type === "전세" ? "전세" : "월세"));
-  pr.appendChild(small);
+  if(l.type !== "확인필요"){
+    var small = el("small", null, l.type === "매매" ? "분양가" : (l.type === "전세" ? "전세" : "월세"));
+    pr.appendChild(small);
+  }
   card.appendChild(pr);
 
   var meta = el("div","meta");
-  meta.appendChild(el("span", null, l.sizes.join("·") + "㎡"));
-  meta.appendChild(el("span", null, l.households + "세대"));
-  meta.appendChild(el("span", null, fmtDate(l.rStart) + " ~ " + fmtDate(l.rEnd)));
+  if(l.type === "확인필요"){
+    meta.appendChild(el("span", null, "📅 " + fmtDate(l.rStart) + " 등록"));
+  } else {
+    meta.appendChild(el("span", null, l.sizes.join("·") + "㎡"));
+    meta.appendChild(el("span", null, l.households + "세대"));
+    meta.appendChild(el("span", null, fmtDate(l.rStart) + " ~ " + fmtDate(l.rEnd)));
+  }
   card.appendChild(meta);
 
   if(fit){
@@ -1049,7 +1065,7 @@ function openDetail(id){
 
   var bd = el("div","d-badges");
   bd.appendChild(el("span","badge ag-" + l.agency, l.agency));
-  bd.appendChild(el("span","badge tp-" + l.type, l.type));
+  bd.appendChild(el("span","badge tp-" + l.type, l.type === "확인필요" ? "공고" : l.type));
   bd.appendChild(el("span","status " + st.cls, st.label));
   sheet.appendChild(bd);
 
@@ -1076,7 +1092,7 @@ function openDetail(id){
     });
     fd.appendChild(tags);
     sheet.appendChild(fd);
-  } else {
+  } else if(l.type !== "확인필요"){
     var nf = el("div","fit-detail");
     var nb = el("div","hd");
     nb.appendChild(el("b", null, "내 조건을 넣으면 적합도를 알려드려요"));
@@ -1101,6 +1117,37 @@ function openDetail(id){
       s.appendChild(row);
     });
     sheet.appendChild(s);
+  }
+
+  if(l.type === "확인필요"){
+    var noticeBox = el("div","fit-detail");
+    var nHd = el("div","hd");
+    nHd.appendChild(el("b", null, "분양가·평형 정보는 준비 중이에요"));
+    noticeBox.appendChild(nHd);
+    var nTags = el("div","tags");
+    nTags.appendChild(el("span","tag bad","SH 홈페이지 원문에서 정확한 조건을 확인해주세요"));
+    noticeBox.appendChild(nTags);
+    sheet.appendChild(noticeBox);
+
+    section("공고 정보", [
+      ["공급 기관", "SH (서울주택도시개발공사)"],
+      ["등록일", fmtDate(l.noticeDate)],
+    ]);
+
+    var linkText = l.verifiedLink ? "공고 원문 보러가기" : "SH 홈페이지에서 찾아보기";
+    var a2 = el("a","link-btn",linkText);
+    a2.href = l.link;
+    a2.target = "_blank";
+    a2.rel = "noopener";
+    sheet.appendChild(a2);
+
+    var fb2 = el("button","fav-btn", favorites.has(l.id) ? "찜 취소하기" : "찜해두기");
+    fb2.addEventListener("click", function(){ toggleFav(l.id); });
+    sheet.appendChild(fb2);
+
+    $("detailOv").classList.add("show");
+    sheet.scrollTop = 0;
+    return;
   }
 
   var costRows = [["공급 유형", l.type]];
