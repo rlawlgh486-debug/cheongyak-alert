@@ -1,6 +1,6 @@
 {
-  "name": "청약모아",
-  "short_name": "청약모아",
+  "name": "Wishome",
+  "short_name": "Wishome",
   "description": "전국 청약 공고를 한 곳에서 확인하고 내 조건에 맞는 적합도를 확인하세요",
   "start_url": "./index.html",
   "scope": "./",
