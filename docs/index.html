@@ -345,6 +345,14 @@
     </header>
 
     <div class="toolbar">
+      <div class="chips" id="agencyChips">
+        <button class="chip active" data-agency="all">전체 기관</button>
+        <button class="chip" data-agency="SH">SH</button>
+        <button class="chip" data-agency="LH">LH</button>
+        <button class="chip" data-agency="민간">민간</button>
+      </div>
+    </div>
+    <div class="toolbar" style="padding-top:0">
       <div class="chips" id="filterChips">
         <button class="chip active" data-filter="all">전체</button>
         <button class="chip" data-filter="open">접수중만</button>
@@ -766,7 +774,7 @@ function fitColor(s){
 }
 
 /* ===== UI 상태 ===== */
-var state = { sido:"", gu:"", filter:"all", sort:"soon", q:"" };
+var state = { sido:"", gu:"", filter:"all", agency:"all", sort:"soon", q:"" };
 var currentPage = "home";
 var selectMode = false;
 var selectedIds = new Set();
@@ -783,10 +791,21 @@ var HEART_SVG = '<svg viewBox="0 0 24 24"><path d="M12 20.3C10 19 3.5 14.6 3.5 9
 var CHECK_SVG = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg>';
 
 /* ===== 필터 ===== */
+function agencyPriority(agency){
+  if(agency === "SH") return 0;
+  if(agency === "LH") return 1;
+  return 2; // 민간
+}
+
 function applyFilters(){
   var arr = LISTINGS.slice();
+  // 마감(접수 종료)된 공고는 항상 자동으로 숨김
+  arr = arr.filter(function(l){ return getStatus(l).key !== "closed"; });
   if(state.sido) arr = arr.filter(function(l){ return l.sido === state.sido; });
   if(state.gu) arr = arr.filter(function(l){ return l.gu === state.gu; });
+  if(state.agency !== "all"){
+    arr = arr.filter(function(l){ return l.agency === state.agency; });
+  }
   if(state.filter === "open"){
     arr = arr.filter(function(l){ var k = getStatus(l).key; return k === "ongoing" || k === "soon"; });
   } else if(state.filter !== "all"){
@@ -799,19 +818,28 @@ function applyFilters(){
     });
   }
   var order = { soon:0, ongoing:1, upcoming:2, closed:3 };
+  var innerCompare;
   if(state.sort === "soon"){
-    arr.sort(function(a,b){
+    innerCompare = function(a,b){
       var oa = order[getStatus(a).key], ob = order[getStatus(b).key];
       if(oa !== ob) return oa - ob;
       return a.rEnd - b.rEnd;
-    });
+    };
   } else if(state.sort === "fit" && hasProfile){
-    arr.sort(function(a,b){ return (computeFit(b).score) - (computeFit(a).score); });
+    innerCompare = function(a,b){ return (computeFit(b).score) - (computeFit(a).score); };
   } else if(state.sort === "new"){
-    arr.sort(function(a,b){ return b.noticeDate - a.noticeDate; });
+    innerCompare = function(a,b){ return b.noticeDate - a.noticeDate; };
   } else if(state.sort === "price"){
-    arr.sort(function(a,b){ return priceKey(a) - priceKey(b); });
+    innerCompare = function(a,b){ return priceKey(a) - priceKey(b); };
+  } else {
+    innerCompare = function(){ return 0; };
   }
+  // SH·LH 같은 공공기관 공고를 항상 먼저 보여주고, 같은 기관 안에서는 선택한 정렬 기준 적용
+  arr.sort(function(a, b){
+    var pa = agencyPriority(a.agency), pb = agencyPriority(b.agency);
+    if(pa !== pb) return pa - pb;
+    return innerCompare(a, b);
+  });
   return arr;
 }
 
@@ -939,7 +967,7 @@ function renderHome(){
   var arr = applyFilters();
   listEl.innerHTML = "";
 
-  var isFiltered = state.sido || state.gu || state.filter !== "all" || state.q.trim();
+  var isFiltered = state.sido || state.gu || state.filter !== "all" || state.agency !== "all" || state.q.trim();
   $("resetBtn").classList.toggle("show", !!isFiltered);
 
   if(arr.length === 0){
@@ -1248,6 +1276,15 @@ function bindEvents(){
     renderHome();
   });
 
+  $("agencyChips").addEventListener("click", function(e){
+    var btn = e.target.closest(".chip");
+    if(!btn) return;
+    $("agencyChips").querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
+    btn.classList.add("active");
+    state.agency = btn.dataset.agency;
+    renderHome();
+  });
+
   $("filterChips").addEventListener("click", function(e){
     var btn = e.target.closest(".chip");
     if(!btn) return;
@@ -1267,12 +1304,14 @@ function bindEvents(){
   });
 
   function resetFilters(){
-    state.sido = ""; state.gu = ""; state.filter = "all"; state.q = "";
+    state.sido = ""; state.gu = ""; state.filter = "all"; state.agency = "all"; state.q = "";
     $("sidoSelect").value = "";
     refreshGuSelect();
     renderRegionChips();
     $("searchInput").value = "";
     $("clearSearch").classList.remove("show");
+    $("agencyChips").querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
+    $("agencyChips").querySelector('[data-agency="all"]').classList.add("active");
     $("filterChips").querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
     $("filterChips").querySelector('[data-filter="all"]').classList.add("active");
     renderHome();
