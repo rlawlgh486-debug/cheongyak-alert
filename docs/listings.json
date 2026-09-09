@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-09T14:16:36.382420+00:00",
-  "count": 45,
+  "updatedAt": "2026-09-09T15:09:50.034432+00:00",
+  "count": 46,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -33,7 +33,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-16",
       "winDate": "2026-09-23",
-      "noticeDate": "2026-09-04"
+      "noticeDate": "2026-09-04",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000423_2026000423",
@@ -66,7 +67,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-16",
       "winDate": "2026-09-22",
-      "noticeDate": "2026-09-04"
+      "noticeDate": "2026-09-04",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000422_2026000422",
@@ -99,7 +101,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-16",
       "winDate": "2026-09-22",
-      "noticeDate": "2026-09-04"
+      "noticeDate": "2026-09-04",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000420_2026000420",
@@ -132,7 +135,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-16",
       "winDate": "2026-09-22",
-      "noticeDate": "2026-09-04"
+      "noticeDate": "2026-09-04",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000393_2026000393",
@@ -166,7 +170,8 @@
       "rStart": "2026-09-15",
       "rEnd": "2026-09-17",
       "winDate": "2026-09-23",
-      "noticeDate": "2026-09-04"
+      "noticeDate": "2026-09-04",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000394_2026000394",
@@ -196,7 +201,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-16",
       "winDate": "2026-09-22",
-      "noticeDate": "2026-09-03"
+      "noticeDate": "2026-09-03",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000202_2026000202",
@@ -226,7 +232,8 @@
       "rStart": "2026-09-08",
       "rEnd": "2026-09-10",
       "winDate": "2026-09-16",
-      "noticeDate": "2026-09-03"
+      "noticeDate": "2026-09-03",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000419_2026000419",
@@ -266,7 +273,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-16",
       "winDate": "2026-09-22",
-      "noticeDate": "2026-09-02"
+      "noticeDate": "2026-09-02",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000403_2026000403",
@@ -300,7 +308,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-16",
       "winDate": "2026-09-22",
-      "noticeDate": "2026-09-02"
+      "noticeDate": "2026-09-02",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026820009_2026820009",
@@ -323,7 +332,8 @@
       "rStart": "2026-09-08",
       "rEnd": "2026-09-09",
       "winDate": "2026-09-16",
-      "noticeDate": "2026-08-31"
+      "noticeDate": "2026-08-31",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000414_2026000414",
@@ -357,7 +367,8 @@
       "rStart": "2026-09-17",
       "rEnd": "2026-10-02",
       "winDate": "2026-10-21",
-      "noticeDate": "2026-08-31"
+      "noticeDate": "2026-08-31",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000401_2026000401",
@@ -381,7 +392,8 @@
       "rStart": "2026-09-07",
       "rEnd": "2026-09-08",
       "winDate": "2026-09-14",
-      "noticeDate": "2026-08-28"
+      "noticeDate": "2026-08-28",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000399_2026000399",
@@ -411,7 +423,8 @@
       "rStart": "2026-09-07",
       "rEnd": "2026-09-10",
       "winDate": "2026-09-16",
-      "noticeDate": "2026-08-28"
+      "noticeDate": "2026-08-28",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000416_2026000416",
@@ -443,7 +456,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-17",
       "winDate": "2026-10-07",
-      "noticeDate": "2026-08-27"
+      "noticeDate": "2026-08-27",
+      "verifiedLink": true
     },
     {
       "id": "apt_2026000409_2026000409",
@@ -472,7 +486,8 @@
       "rStart": "2026-09-07",
       "rEnd": "2026-09-17",
       "winDate": "2026-10-08",
-      "noticeDate": "2026-08-26"
+      "noticeDate": "2026-08-26",
+      "verifiedLink": true
     },
     {
       "id": "rent_2026850046_2026850046",
@@ -495,7 +510,8 @@
       "rStart": "20260907",
       "rEnd": "20260908",
       "winDate": "20260911",
-      "noticeDate": "20260901"
+      "noticeDate": "20260901",
+      "verifiedLink": true
     },
     {
       "id": "urbty_2026950078_2026950078",
@@ -520,7 +536,8 @@
       "rStart": "2026-09-08",
       "rEnd": "2026-09-08",
       "winDate": "2026-09-11",
-      "noticeDate": "2026-09-03"
+      "noticeDate": "2026-09-03",
+      "verifiedLink": true
     },
     {
       "id": "urbty_2026950076_2026950076",
@@ -550,7 +567,8 @@
       "rStart": "2026-09-08",
       "rEnd": "2026-09-08",
       "winDate": "2026-09-11",
-      "noticeDate": "2026-09-03"
+      "noticeDate": "2026-09-03",
+      "verifiedLink": true
     },
     {
       "id": "urbty_2026950079_2026950079",
@@ -574,7 +592,8 @@
       "rStart": "2026-09-01",
       "rEnd": "2026-09-02",
       "winDate": "2026-09-10",
-      "noticeDate": "2026-08-27"
+      "noticeDate": "2026-08-27",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910237_2026910237",
@@ -597,7 +616,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-14",
       "winDate": "2026-09-17",
-      "noticeDate": "2026-09-08"
+      "noticeDate": "2026-09-08",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910235_2026910235",
@@ -620,7 +640,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-14",
       "winDate": "2026-09-17",
-      "noticeDate": "2026-09-08"
+      "noticeDate": "2026-09-08",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910233_2026910233",
@@ -643,7 +664,8 @@
       "rStart": "2026-09-14",
       "rEnd": "2026-09-14",
       "winDate": "2026-09-17",
-      "noticeDate": "2026-09-08"
+      "noticeDate": "2026-09-08",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910231_2026910231",
@@ -666,7 +688,8 @@
       "rStart": "2026-09-09",
       "rEnd": "2026-09-09",
       "winDate": "2026-09-14",
-      "noticeDate": "2026-09-04"
+      "noticeDate": "2026-09-04",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910228_2026910228",
@@ -689,7 +712,8 @@
       "rStart": "2026-09-08",
       "rEnd": "2026-09-08",
       "winDate": "2026-09-11",
-      "noticeDate": "2026-09-03"
+      "noticeDate": "2026-09-03",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910230_2026910230",
@@ -712,7 +736,8 @@
       "rStart": "2026-09-07",
       "rEnd": "2026-09-07",
       "winDate": "2026-09-10",
-      "noticeDate": "2026-08-31"
+      "noticeDate": "2026-08-31",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026930030_2026930030",
@@ -735,7 +760,8 @@
       "rStart": "2026-09-02",
       "rEnd": "2026-09-02",
       "winDate": "2026-09-07",
-      "noticeDate": "2026-08-28"
+      "noticeDate": "2026-08-28",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026930029_2026930029",
@@ -758,7 +784,8 @@
       "rStart": "2026-09-02",
       "rEnd": "2026-09-02",
       "winDate": "2026-09-07",
-      "noticeDate": "2026-08-28"
+      "noticeDate": "2026-08-28",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910225_2026910225",
@@ -781,7 +808,8 @@
       "rStart": "2026-09-02",
       "rEnd": "2026-09-02",
       "winDate": "2026-09-07",
-      "noticeDate": "2026-08-28"
+      "noticeDate": "2026-08-28",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910226_2026910226",
@@ -804,7 +832,8 @@
       "rStart": "2026-09-03",
       "rEnd": "2026-09-04",
       "winDate": "2026-09-09",
-      "noticeDate": "2026-08-27"
+      "noticeDate": "2026-08-27",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910224_2026910224",
@@ -827,7 +856,8 @@
       "rStart": "2026-09-01",
       "rEnd": "2026-09-01",
       "winDate": "2026-09-04",
-      "noticeDate": "2026-08-27"
+      "noticeDate": "2026-08-27",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910223_2026910223",
@@ -850,7 +880,8 @@
       "rStart": "2026-09-01",
       "rEnd": "2026-09-01",
       "winDate": "2026-09-04",
-      "noticeDate": "2026-08-27"
+      "noticeDate": "2026-08-27",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910221_2026910221",
@@ -873,7 +904,8 @@
       "rStart": "2026-09-01",
       "rEnd": "2026-09-07",
       "winDate": "2026-09-10",
-      "noticeDate": "2026-08-27"
+      "noticeDate": "2026-08-27",
+      "verifiedLink": true
     },
     {
       "id": "remndr_2026910229_2026910229",
@@ -896,7 +928,8 @@
       "rStart": "2026-08-31",
       "rEnd": "2026-08-31",
       "winDate": "2026-09-03",
-      "noticeDate": "2026-08-26"
+      "noticeDate": "2026-08-26",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940197_2026940197",
@@ -919,7 +952,8 @@
       "rStart": "20260910",
       "rEnd": "20260911",
       "winDate": "20260916",
-      "noticeDate": "20260908"
+      "noticeDate": "20260908",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940196_2026940196",
@@ -942,7 +976,8 @@
       "rStart": "20260911",
       "rEnd": "20260911",
       "winDate": "20260916",
-      "noticeDate": "20260908"
+      "noticeDate": "20260908",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940194_2026940194",
@@ -967,7 +1002,8 @@
       "rStart": "20260908",
       "rEnd": "20260909",
       "winDate": "20260914",
-      "noticeDate": "20260904"
+      "noticeDate": "20260904",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940192_2026940192",
@@ -991,7 +1027,8 @@
       "rStart": "20260907",
       "rEnd": "20260908",
       "winDate": "20260911",
-      "noticeDate": "20260903"
+      "noticeDate": "20260903",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940191_2026940191",
@@ -1015,7 +1052,8 @@
       "rStart": "20260909",
       "rEnd": "20260914",
       "winDate": "20260917",
-      "noticeDate": "20260907"
+      "noticeDate": "20260907",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940187_2026940187",
@@ -1039,7 +1077,8 @@
       "rStart": "20260909",
       "rEnd": "20260910",
       "winDate": "20260915",
-      "noticeDate": "20260907"
+      "noticeDate": "20260907",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940186_2026940186",
@@ -1063,7 +1102,8 @@
       "rStart": "20260910",
       "rEnd": "20260915",
       "winDate": "20260918",
-      "noticeDate": "20260908"
+      "noticeDate": "20260908",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940185_2026940185",
@@ -1087,7 +1127,8 @@
       "rStart": "20260907",
       "rEnd": "20260908",
       "winDate": "20260911",
-      "noticeDate": "20260903"
+      "noticeDate": "20260903",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940184_2026940184",
@@ -1111,7 +1152,8 @@
       "rStart": "20260902",
       "rEnd": "20260908",
       "winDate": "20260911",
-      "noticeDate": "20260828"
+      "noticeDate": "20260828",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940183_2026940183",
@@ -1141,7 +1183,8 @@
       "rStart": "20260903",
       "rEnd": "20260903",
       "winDate": "20260908",
-      "noticeDate": "20260901"
+      "noticeDate": "20260901",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940182_2026940182",
@@ -1166,7 +1209,8 @@
       "rStart": "20260903",
       "rEnd": "20260904",
       "winDate": "20260910",
-      "noticeDate": "20260827"
+      "noticeDate": "20260827",
+      "verifiedLink": true
     },
     {
       "id": "opt_2026940179_2026940179",
@@ -1189,7 +1233,30 @@
       "rStart": "20260831",
       "rEnd": "20260901",
       "winDate": "20260904",
-      "noticeDate": "20260826"
+      "noticeDate": "20260826",
+      "verifiedLink": true
+    },
+    {
+      "id": "sh_10a1160808d7",
+      "name": "[토지지원 사회주택]함께주택4호 401-3호 입주자 모집 공고",
+      "agency": "SH",
+      "sido": "서울",
+      "gu": "",
+      "addr": "서울",
+      "sizes": [],
+      "type": "확인필요",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 0,
+      "rent": 0,
+      "households": 0,
+      "special": [],
+      "link": "https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/list.do?multi_itm_seq=2",
+      "rStart": "2026-09-09",
+      "rEnd": "2026-09-09",
+      "winDate": "2026-09-09",
+      "noticeDate": "2026-09-09",
+      "verifiedLink": false
     }
   ]
 }
