@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from config import LOG_FILE, DATA_DIR
 from api_client import get_recent_listings
+from sh_scraper import get_recent_sh_listings
 from archiver import get_new_listings
 from build_app_data import build as build_app_data
 
@@ -44,6 +45,19 @@ def main():
 
         if not current_listings:
             logger.warning("조회된 공고가 없습니다.")
+            current_listings = []
+
+        # 1-2. SH 홈페이지에서 공고 스크래핑 (API가 없는 SH 전용 보완 수집)
+        #      실패해도 전체 실행이 멈추지 않도록 별도로 감싸서 처리
+        logger.info("Step 1-2: SH 홈페이지에서 공고 스크래핑 중...")
+        try:
+            sh_listings = get_recent_sh_listings(days=14)
+            current_listings.extend(sh_listings)
+        except Exception as e:
+            logger.error(f"SH 스크래핑 실패 (건너뛰고 계속 진행): {e}")
+
+        if not current_listings:
+            logger.warning("수집된 공고가 전혀 없습니다.")
             return False
 
         # 2. 아카이브에서 새 공고 찾기 (+ 자동 아카이빙)
