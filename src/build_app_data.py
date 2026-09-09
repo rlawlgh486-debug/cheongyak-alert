@@ -34,8 +34,13 @@ def build():
         "id", "name", "agency", "sido", "gu", "addr", "sizes", "type",
         "priceMin", "priceMax", "deposit", "rent", "households",
         "special", "link", "rStart", "rEnd", "winDate", "noticeDate",
+        "verifiedLink",
     ]
-    clean_items = [{k: item.get(k) for k in keys} for item in items]
+    clean_items = [{k: item.get(k) for k in keys if k in item or k == "verifiedLink"} for item in items]
+    # verifiedLink가 없는 기존(API) 항목은 명시적으로 true로 채움 (공식 API 링크는 항상 정확함)
+    for it in clean_items:
+        if it.get("verifiedLink") is None:
+            it["verifiedLink"] = True
 
     DOCS_DIR.mkdir(exist_ok=True)
     output = {
