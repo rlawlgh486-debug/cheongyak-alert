@@ -81,9 +81,15 @@ def _agency_from_names(house_nm: str, bsns_mby_nm: str) -> str:
     return "민간"
 
 
-def _fetch_list(endpoint: str, days: int, label: str) -> List[Dict[str, Any]]:
-    """공통 페이지네이션: 최근 N일 이내 모집공고일의 공고 목록 조회."""
-    cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
+def _fetch_list(endpoint: str, days: int, label: str, date_fmt: str = "%Y-%m-%d") -> List[Dict[str, Any]]:
+    """공통 페이지네이션: 최근 N일 이내 모집공고일의 공고 목록 조회.
+
+    ⚠️ API마다 모집공고일 필터 형식이 다름 (Swagger 문서 기준):
+       - APT/오피스텔등/잔여세대: YYYY-MM-DD (하이픈 있음)
+       - 공공지원민간임대/임의공급: YYYYMMDD (하이픈 없음)
+       형식이 안 맞으면 필터가 무시되고 전체 기간 데이터가 반환되므로 주의.
+    """
+    cutoff = (datetime.now() - timedelta(days=days)).strftime(date_fmt)
     items: List[Dict[str, Any]] = []
     page = 1
     per_page = 100
@@ -422,8 +428,8 @@ def _enrich_opt(notice: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     }
 
 
-def _collect(endpoint: str, label: str, days: int, enrich_fn) -> List[Dict[str, Any]]:
-    notices = _fetch_list(endpoint, days, label)
+def _collect(endpoint: str, label: str, days: int, enrich_fn, date_fmt: str = "%Y-%m-%d") -> List[Dict[str, Any]]:
+    notices = _fetch_list(endpoint, days, label, date_fmt=date_fmt)
     results = []
     for i, notice in enumerate(notices, 1):
         try:
@@ -447,10 +453,10 @@ def get_recent_listings(days: int = 14) -> List[Dict[str, Any]]:
     all_results: List[Dict[str, Any]] = []
 
     all_results += _collect(APT_DETAIL_ENDPOINT, "APT/매매", days, _enrich_apt)
-    all_results += _collect(RENT_DETAIL_ENDPOINT, "공공지원민간임대/전세", days, _enrich_rent)
+    all_results += _collect(RENT_DETAIL_ENDPOINT, "공공지원민간임대/전세", days, _enrich_rent, date_fmt="%Y%m%d")
     all_results += _collect(URBTY_DETAIL_ENDPOINT, "오피스텔등/매매·월세", days, _enrich_urbty)
     all_results += _collect(REMNDR_DETAIL_ENDPOINT, "잔여세대·무순위/매매", days, _enrich_remndr)
-    all_results += _collect(OPT_DETAIL_ENDPOINT, "임의공급/매매", days, _enrich_opt)
+    all_results += _collect(OPT_DETAIL_ENDPOINT, "임의공급/매매", days, _enrich_opt, date_fmt="%Y%m%d")
 
     logger.info(f"전체 소스 합산 완료: {len(all_results)}건")
     return all_results
