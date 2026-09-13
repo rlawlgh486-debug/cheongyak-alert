@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-12T21:04:21.926965+00:00",
+  "updatedAt": "2026-09-13T21:04:00.692131+00:00",
   "count": 70,
   "items": [
     {
@@ -1383,6 +1383,9 @@
         37,
         42,
         43,
+        48,
+        50,
+        51,
         55,
         56,
         58,
@@ -1407,10 +1410,6 @@
         105,
         106,
         107,
-        108,
-        111,
-        116,
-        118,
         120
       ],
       "type": "매매",
@@ -1418,7 +1417,7 @@
       "priceMax": 215595,
       "deposit": 0,
       "rent": 0,
-      "households": 1290,
+      "households": 1153,
       "special": [],
       "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026950080&pblancNo=2026950080&houseSecd=02",
       "rStart": "2026-09-14",
