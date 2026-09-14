@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "id": "rent_2026850048_2026850048",
+    "name": "의왕청계역 시티프라디움 디하모니",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "의왕시",
+    "addr": "경기도 의왕시 포일동(의왕청계2 공공주택지구 M-1블록)",
+    "sizes": [
+      71,
+      72,
+      84
+    ],
+    "type": "전세",
+    "priceMin": 0,
+    "priceMax": 0,
+    "deposit": 60500,
+    "rent": 0,
+    "households": 11,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850048&pblancNo=2026850048&houseSecd=03",
+    "rStart": "20260921",
+    "rEnd": "20260921",
+    "winDate": "20260928",
+    "noticeDate": "20260914"
+  },
+  {
+    "id": "opt_2026940200_2026940200",
+    "name": "이천자이 더 레브(2차)",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "이천시",
+    "addr": "경기도 이천시 송정동 산31번지 일원",
+    "sizes": [
+      84,
+      117
+    ],
+    "type": "매매",
+    "priceMin": 54100,
+    "priceMax": 76300,
+    "deposit": 0,
+    "rent": 0,
+    "households": 11,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940200&pblancNo=2026940200",
+    "rStart": "20260916",
+    "rEnd": "20260916",
+    "winDate": "20260921",
+    "noticeDate": "20260914"
+  }
+]
