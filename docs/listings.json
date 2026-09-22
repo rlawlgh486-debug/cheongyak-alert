@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-21T21:04:23.066083+00:00",
-  "count": 109,
+  "updatedAt": "2026-09-22T21:04:23.360734+00:00",
+  "count": 111,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -1379,6 +1379,7 @@
       "gu": "송파구",
       "addr": "서울특별시 송파구 장지동 909",
       "sizes": [
+        35,
         37,
         42,
         43,
@@ -1387,6 +1388,7 @@
         51,
         53,
         55,
+        56,
         58,
         60,
         61,
@@ -1408,19 +1410,14 @@
         104,
         105,
         106,
-        107,
-        108,
-        111,
-        116,
-        118,
-        120
+        107
       ],
       "type": "매매",
-      "priceMin": 56693,
-      "priceMax": 215595,
+      "priceMin": 49355,
+      "priceMax": 190556,
       "deposit": 0,
       "rent": 0,
-      "households": 1070,
+      "households": 968,
       "special": [],
       "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026950080&pblancNo=2026950080&houseSecd=02",
       "rStart": "2026-09-14",
@@ -2940,6 +2937,52 @@
       "rEnd": "2026-09-21",
       "winDate": "2026-09-21",
       "noticeDate": "2026-09-21",
+      "verifiedLink": false
+    },
+    {
+      "id": "remndr_2026910248_2026910248",
+      "name": "제일풍경채 첨단3지구(A6BL)",
+      "agency": "민간",
+      "sido": "광주",
+      "gu": "첨단3지구",
+      "addr": "광주연구개발특구 첨단3지구 A6블록(전남광주통합특별시 북구 월출동) ",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 51460,
+      "priceMax": 51800,
+      "deposit": 0,
+      "rent": 0,
+      "households": 187,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910248&pblancNo=2026910248",
+      "rStart": "2026-09-28",
+      "rEnd": "2026-09-28",
+      "winDate": "2026-10-01",
+      "noticeDate": "2026-09-22",
+      "verifiedLink": true
+    },
+    {
+      "id": "sh_7a9832bad375",
+      "name": "[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+      "agency": "SH",
+      "sido": "서울",
+      "gu": "",
+      "addr": "서울",
+      "sizes": [],
+      "type": "확인필요",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 0,
+      "rent": 0,
+      "households": 0,
+      "special": [],
+      "link": "https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/list.do?multi_itm_seq=2",
+      "rStart": "2026-09-22",
+      "rEnd": "2026-09-22",
+      "winDate": "2026-09-22",
+      "noticeDate": "2026-09-22",
       "verifiedLink": false
     }
   ]
