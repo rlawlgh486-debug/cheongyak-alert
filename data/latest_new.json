@@ -1,7 +1,30 @@
 [
   {
-    "id": "sh_059b4777c3b0",
-    "name": "NEW[토지지원 사회주택]유니버설디자인하우스_망우 입주자 모집 공고",
+    "id": "remndr_2026910251_2026910251",
+    "name": "충정로역자이르네",
+    "agency": "민간",
+    "sido": "서울",
+    "gu": "중구",
+    "addr": "서울특별시 중구 중림동 157-2번지 일원",
+    "sizes": [
+      84
+    ],
+    "type": "매매",
+    "priceMin": 229500,
+    "priceMax": 243300,
+    "deposit": 0,
+    "rent": 0,
+    "households": 35,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910251&pblancNo=2026910251",
+    "rStart": "2026-10-06",
+    "rEnd": "2026-10-06",
+    "winDate": "2026-10-12",
+    "noticeDate": "2026-09-28"
+  },
+  {
+    "id": "sh_7f701711ba11",
+    "name": "[토지지원 사회주택]유니버설디자인하우스_망우 입주자 모집 공고",
     "agency": "SH",
     "sido": "서울",
     "gu": "",
