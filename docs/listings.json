@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-28T21:04:59.159944+00:00",
-  "count": 120,
+  "updatedAt": "2026-09-29T21:04:47.210244+00:00",
+  "count": 121,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -3193,6 +3193,34 @@
       "winDate": "2026-09-28",
       "noticeDate": "2026-09-28",
       "verifiedLink": false
+    },
+    {
+      "id": "rent_2026850050_2026850050",
+      "name": "서면 지원 더뷰 드림아파트(공공지원민간임대)",
+      "agency": "민간",
+      "sido": "부산",
+      "gu": "부산진구",
+      "addr": "부산광역시 부산진구 부전동 390-1",
+      "sizes": [
+        24,
+        50,
+        60
+      ],
+      "type": "전세",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 11060,
+      "rent": 0,
+      "households": 176,
+      "special": [
+        "신혼부부"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850050&pblancNo=2026850050&houseSecd=03",
+      "rStart": "20261006",
+      "rEnd": "20261007",
+      "winDate": "20261013",
+      "noticeDate": "20260929",
+      "verifiedLink": true
     }
   ]
 }
