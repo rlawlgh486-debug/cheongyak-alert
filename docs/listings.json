@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-07T00:14:16.195477+00:00",
-  "count": 149,
+  "updatedAt": "2026-10-08T00:33:54.755088+00:00",
+  "count": 152,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -3949,6 +3949,76 @@
       "winDate": "20261014",
       "noticeDate": "20261006",
       "verifiedLink": true
+    },
+    {
+      "id": "urbty_2026950086_2026950086",
+      "name": "더샵 오산역아크시티 오피스텔",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "오산시",
+      "addr": "경기도 오산시 가수동 453번지 (오산 세교2지구 M1블록)",
+      "sizes": [
+        85
+      ],
+      "type": "매매",
+      "priceMin": 43800,
+      "priceMax": 44800,
+      "deposit": 0,
+      "rent": 0,
+      "households": 90,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026950086&pblancNo=2026950086&houseSecd=02",
+      "rStart": "2026-10-12",
+      "rEnd": "2026-10-12",
+      "winDate": "2026-10-15",
+      "noticeDate": "2026-10-07",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026930041_2026930041",
+      "name": "세종 리더스포레 나릿재마을 1단지",
+      "agency": "민간",
+      "sido": "세종",
+      "gu": "",
+      "addr": "세종특별자치시 나성동 835",
+      "sizes": [
+        113
+      ],
+      "type": "매매",
+      "priceMin": 34320,
+      "priceMax": 34320,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930041&pblancNo=2026930041",
+      "rStart": "2026-10-12",
+      "rEnd": "2026-10-12",
+      "winDate": "2026-10-15",
+      "noticeDate": "2026-10-07",
+      "verifiedLink": true
+    },
+    {
+      "id": "sh_8c0d19469fb8",
+      "name": "[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+      "agency": "SH",
+      "sido": "서울",
+      "gu": "",
+      "addr": "서울",
+      "sizes": [],
+      "type": "확인필요",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 0,
+      "rent": 0,
+      "households": 0,
+      "special": [],
+      "link": "https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/list.do?multi_itm_seq=2",
+      "rStart": "2026-10-07",
+      "rEnd": "2026-10-07",
+      "winDate": "2026-10-07",
+      "noticeDate": "2026-10-07",
+      "verifiedLink": false
     }
   ]
 }
