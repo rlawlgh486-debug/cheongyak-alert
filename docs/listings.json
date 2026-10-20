@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-20T00:03:03.576794+00:00",
-  "count": 203,
+  "updatedAt": "2026-10-20T23:32:58.183282+00:00",
+  "count": 205,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -5385,6 +5385,54 @@
       "rEnd": "20261023",
       "winDate": "20261028",
       "noticeDate": "20261019",
+      "verifiedLink": true
+    },
+    {
+      "id": "urbty_2026950093_2026950093",
+      "name": "매교역 팰루시드",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "수원시",
+      "addr": "경기도 수원시 권선구 세류동 817-72번지 일원 (권선113의6구역 주택재개발정비사업)",
+      "sizes": [
+        39
+      ],
+      "type": "월세",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 31200,
+      "rent": 0,
+      "households": 154,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026950093&pblancNo=2026950093&houseSecd=02",
+      "rStart": "2026-10-26",
+      "rEnd": "2026-10-27",
+      "winDate": "2026-10-30",
+      "noticeDate": "2026-10-20",
+      "verifiedLink": true
+    },
+    {
+      "id": "opt_2026940231_2026940231",
+      "name": "의정부역 센트럴 아이파크 (5차)",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "의정부시",
+      "addr": "경기도 의정부시 의정부동 253-19번지 일원",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 79600,
+      "priceMax": 82600,
+      "deposit": 0,
+      "rent": 0,
+      "households": 8,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940231&pblancNo=2026940231",
+      "rStart": "20261023",
+      "rEnd": "20261023",
+      "winDate": "20261028",
+      "noticeDate": "20261020",
       "verifiedLink": true
     }
   ]
