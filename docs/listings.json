@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-24T22:48:08.761299+00:00",
-  "count": 227,
+  "updatedAt": "2026-10-25T22:55:26.770726+00:00",
+  "count": 228,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -6029,6 +6029,28 @@
       "rEnd": "2026-10-23",
       "winDate": "2026-10-23",
       "noticeDate": "2026-10-23",
+      "verifiedLink": false
+    },
+    {
+      "id": "sh_3eee7a3eb01f",
+      "name": "NEW[토지지원 사회주택]유니버설디자인하우스_장안 입주자 모집 공고",
+      "agency": "SH",
+      "sido": "서울",
+      "gu": "",
+      "addr": "서울",
+      "sizes": [],
+      "type": "확인필요",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 0,
+      "rent": 0,
+      "households": 0,
+      "special": [],
+      "link": "https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/list.do?multi_itm_seq=2",
+      "rStart": "2026-10-26",
+      "rEnd": "2026-10-26",
+      "winDate": "2026-10-26",
+      "noticeDate": "2026-10-26",
       "verifiedLink": false
     }
   ]
