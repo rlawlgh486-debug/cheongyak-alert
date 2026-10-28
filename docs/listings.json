@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-27T00:09:05.189952+00:00",
-  "count": 235,
+  "updatedAt": "2026-10-28T00:09:56.034339+00:00",
+  "count": 239,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -6217,6 +6217,110 @@
       "winDate": "2026-10-26",
       "noticeDate": "2026-10-26",
       "verifiedLink": false
+    },
+    {
+      "id": "apt_2026000435_2026000435",
+      "name": "삼도이동 2지구 토지임대부 공공분양주택",
+      "agency": "민간",
+      "sido": "제주",
+      "gu": "제주시",
+      "addr": "제주특별자치도 제주시 삼도이동 1246-1 외 4필지",
+      "sizes": [
+        73,
+        88
+      ],
+      "type": "매매",
+      "priceMin": 25200,
+      "priceMax": 30197,
+      "deposit": 0,
+      "rent": 0,
+      "households": 40,
+      "special": [
+        "신혼부부",
+        "생애최초"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000435&pblancNo=2026000435",
+      "rStart": "2026-11-16",
+      "rEnd": "2026-11-18",
+      "winDate": "2026-11-25",
+      "noticeDate": "2026-10-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000434_2026000434",
+      "name": "삼도이동 1지구 토지임대부 공공분양주택",
+      "agency": "민간",
+      "sido": "제주",
+      "gu": "제주시",
+      "addr": "제주특별자치도 제주시 삼도이동 1244-1 ",
+      "sizes": [
+        72,
+        86
+      ],
+      "type": "매매",
+      "priceMin": 25235,
+      "priceMax": 30233,
+      "deposit": 0,
+      "rent": 0,
+      "households": 32,
+      "special": [
+        "신혼부부",
+        "생애최초"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000434&pblancNo=2026000434",
+      "rStart": "2026-11-16",
+      "rEnd": "2026-11-18",
+      "winDate": "2026-11-24",
+      "noticeDate": "2026-10-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026910275_2026910275",
+      "name": "더샵 분당하이스트",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "성남시",
+      "addr": "경기도 성남시 분당구 정자동 90번지",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 230200,
+      "priceMax": 298100,
+      "deposit": 0,
+      "rent": 0,
+      "households": 58,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910275&pblancNo=2026910275",
+      "rStart": "2026-11-02",
+      "rEnd": "2026-11-02",
+      "winDate": "2026-11-05",
+      "noticeDate": "2026-10-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "opt_2026940239_2026940239",
+      "name": "이천 중리지구 B3블록 금성백조 예미지(3차)",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "이천시",
+      "addr": "경기도 이천시 중리지구 B3블록(중리동 518번지)",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 54700,
+      "priceMax": 54700,
+      "deposit": 0,
+      "rent": 0,
+      "households": 15,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940239&pblancNo=2026940239",
+      "rStart": "20261029",
+      "rEnd": "20261029",
+      "winDate": "20261103",
+      "noticeDate": "20261027",
+      "verifiedLink": true
     }
   ]
 }
