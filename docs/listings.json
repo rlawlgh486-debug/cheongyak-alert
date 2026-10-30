@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-29T00:32:22.874369+00:00",
-  "count": 247,
+  "updatedAt": "2026-10-30T00:31:02.290243+00:00",
+  "count": 252,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -6505,6 +6505,151 @@
       "winDate": "2026-10-27",
       "noticeDate": "2026-10-27",
       "verifiedLink": false
+    },
+    {
+      "id": "apt_2026000535_2026000535",
+      "name": "중앙하이츠 구성 플랫폼시티",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "용인시",
+      "addr": "경기도 용인시 기흥구 마북동 298-1번지 일원",
+      "sizes": [
+        78,
+        90,
+        98,
+        106,
+        110
+      ],
+      "type": "매매",
+      "priceMin": 62500,
+      "priceMax": 85210,
+      "deposit": 0,
+      "rent": 0,
+      "households": 76,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000535&pblancNo=2026000535",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-12",
+      "winDate": "2026-11-18",
+      "noticeDate": "2026-10-29",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000525_2026000525",
+      "name": "엘리프 시흥 더프라임",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "시흥시",
+      "addr": "경기도 시흥시 거모동 시흥거모지구 B-5블록",
+      "sizes": [
+        109
+      ],
+      "type": "매매",
+      "priceMin": 59910,
+      "priceMax": 59930,
+      "deposit": 0,
+      "rent": 0,
+      "households": 304,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000525&pblancNo=2026000525",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-17",
+      "noticeDate": "2026-10-29",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000499_2026000499",
+      "name": "한화포레나 지제역",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "평택시",
+      "addr": "경기도 평택시 세교동 725번지 일원",
+      "sizes": [
+        109,
+        110,
+        111,
+        149
+      ],
+      "type": "매매",
+      "priceMin": 70095,
+      "priceMax": 96845,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1098,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000499&pblancNo=2026000499",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-18",
+      "noticeDate": "2026-10-29",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026910267_2026910267",
+      "name": "교대역 모아엘가 그랑데",
+      "agency": "민간",
+      "sido": "전남",
+      "gu": "동구",
+      "addr": "전남광주통합특별시 동구 무등로 373",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 50300,
+      "priceMax": 50300,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910267&pblancNo=2026910267",
+      "rStart": "2026-11-03",
+      "rEnd": "2026-11-03",
+      "winDate": "2026-11-06",
+      "noticeDate": "2026-10-29",
+      "verifiedLink": true
+    },
+    {
+      "id": "opt_2026940237_2026940237",
+      "name": "엘리프 한신더휴 수원 C3블록(2차)",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "수원시",
+      "addr": "경기도 수원시 권선구 금곡동 당수1지구 공공주택지구 내 C3블록",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 73000,
+      "priceMax": 79500,
+      "deposit": 0,
+      "rent": 0,
+      "households": 21,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940237&pblancNo=2026940237",
+      "rStart": "20261102",
+      "rEnd": "20261103",
+      "winDate": "20261106",
+      "noticeDate": "20261029",
+      "verifiedLink": true
     }
   ]
 }
