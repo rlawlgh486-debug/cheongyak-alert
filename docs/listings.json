@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-30T00:31:02.290243+00:00",
-  "count": 252,
+  "updatedAt": "2026-10-31T00:16:02.644847+00:00",
+  "count": 260,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -6649,6 +6649,256 @@
       "rEnd": "20261103",
       "winDate": "20261106",
       "noticeDate": "20261029",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026820013_2026820013",
+      "name": "안산신길2 A-6블록 신혼희망타운(공공분양)(본청약)",
+      "agency": "LH",
+      "sido": "경기",
+      "gu": "안산시",
+      "addr": "경기도 안산시 단원구 신길동 일원 안산신길2 공공주택지구 내 A-6블록",
+      "sizes": [
+        81,
+        82
+      ],
+      "type": "매매",
+      "priceMin": 45692,
+      "priceMax": 46658,
+      "deposit": 0,
+      "rent": 0,
+      "households": 220,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
+      "rStart": "2026-11-16",
+      "rEnd": "2026-11-24",
+      "winDate": "2026-12-04",
+      "noticeDate": "2026-10-30",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000539_2026000539",
+      "name": "남춘천 센트레빌",
+      "agency": "민간",
+      "sido": "강원",
+      "gu": "춘천시",
+      "addr": "강원특별자치도 춘천시 효자동 681-12 일원",
+      "sizes": [
+        84,
+        116,
+        117,
+        118,
+        119
+      ],
+      "type": "매매",
+      "priceMin": 46513,
+      "priceMax": 63043,
+      "deposit": 0,
+      "rent": 0,
+      "households": 264,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000539&pblancNo=2026000539",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-17",
+      "noticeDate": "2026-10-30",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000533_2026000533",
+      "name": "안산신길2지구 B-1블록 공공분양주택(본청약)",
+      "agency": "LH",
+      "sido": "경기",
+      "gu": "안산시",
+      "addr": "경기도 안산시 단원구 신길동 일원 안산신길2 공공주택지구 내 B-1블록",
+      "sizes": [
+        97,
+        109,
+        110
+      ],
+      "type": "매매",
+      "priceMin": 51190,
+      "priceMax": 60969,
+      "deposit": 0,
+      "rent": 0,
+      "households": 124,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000533&pblancNo=2026000533",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-18",
+      "winDate": "2026-11-30",
+      "noticeDate": "2026-10-30",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000528_2026000528",
+      "name": "광교 자연앤 센트레빌(A17BL) 공공분양주택",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "수원시",
+      "addr": "경기도 수원시 영통구 원천동 633번지 일원",
+      "sizes": [
+        111,
+        113
+      ],
+      "type": "매매",
+      "priceMin": 93860,
+      "priceMax": 94930,
+      "deposit": 0,
+      "rent": 0,
+      "households": 360,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000528&pblancNo=2026000528",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-17",
+      "noticeDate": "2026-10-30",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000527_2026000527",
+      "name": "광교 자연앤 센트레빌(A17BL) 지분적립형 분양주택",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "수원시",
+      "addr": "경기도 수원시 영통구 원천동 633번지 일원",
+      "sizes": [
+        79,
+        80,
+        81
+      ],
+      "type": "매매",
+      "priceMin": 66790,
+      "priceMax": 68590,
+      "deposit": 0,
+      "rent": 0,
+      "households": 240,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000527&pblancNo=2026000527",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-18",
+      "noticeDate": "2026-10-30",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000523_2026000523",
+      "name": "형곡 센트럴 아테라",
+      "agency": "민간",
+      "sido": "경북",
+      "gu": "구미시",
+      "addr": "경상북도 구미시 형곡동 141-11번지 외 3필지",
+      "sizes": [
+        81
+      ],
+      "type": "매매",
+      "priceMin": 38700,
+      "priceMax": 38700,
+      "deposit": 0,
+      "rent": 0,
+      "households": 135,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000523&pblancNo=2026000523",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-17",
+      "noticeDate": "2026-10-30",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000515_2026000515",
+      "name": "평택 고덕 우미 린 더 프리미어",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "평택시",
+      "addr": "경기도 평택시 고덕 국제화계획지구 내 Abc-33블록",
+      "sizes": [
+        110,
+        111,
+        122,
+        123,
+        131,
+        132,
+        143
+      ],
+      "type": "매매",
+      "priceMin": 56790,
+      "priceMax": 68190,
+      "deposit": 0,
+      "rent": 0,
+      "households": 623,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000515&pblancNo=2026000515",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-17",
+      "noticeDate": "2026-10-30",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000472_2026000472",
+      "name": "구리갈매역세권 B-1블록 신안인스빌 디센트",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "구리시",
+      "addr": "경기도 구리시 구리갈매역세권 B-1블록",
+      "sizes": [
+        98,
+        110
+      ],
+      "type": "매매",
+      "priceMin": 69580,
+      "priceMax": 78500,
+      "deposit": 0,
+      "rent": 0,
+      "households": 213,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000472&pblancNo=2026000472",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-11",
+      "winDate": "2026-11-17",
+      "noticeDate": "2026-10-30",
       "verifiedLink": true
     }
   ]

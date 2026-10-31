@@ -1,53 +1,48 @@
 [
   {
-    "id": "apt_2026000535_2026000535",
-    "name": "중앙하이츠 구성 플랫폼시티",
-    "agency": "민간",
+    "id": "apt_2026820013_2026820013",
+    "name": "안산신길2 A-6블록 신혼희망타운(공공분양)(본청약)",
+    "agency": "LH",
     "sido": "경기",
-    "gu": "용인시",
-    "addr": "경기도 용인시 기흥구 마북동 298-1번지 일원",
+    "gu": "안산시",
+    "addr": "경기도 안산시 단원구 신길동 일원 안산신길2 공공주택지구 내 A-6블록",
     "sizes": [
-      78,
-      90,
-      98,
-      106,
-      110
+      81,
+      82
     ],
     "type": "매매",
-    "priceMin": 62500,
-    "priceMax": 85210,
+    "priceMin": 45692,
+    "priceMax": 46658,
     "deposit": 0,
     "rent": 0,
-    "households": 76,
-    "special": [
-      "신혼부부",
-      "다자녀가구",
-      "생애최초",
-      "노부모부양",
-      "기관추천"
-    ],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000535&pblancNo=2026000535",
-    "rStart": "2026-11-09",
-    "rEnd": "2026-11-12",
-    "winDate": "2026-11-18",
-    "noticeDate": "2026-10-29"
+    "households": 220,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
+    "rStart": "2026-11-16",
+    "rEnd": "2026-11-24",
+    "winDate": "2026-12-04",
+    "noticeDate": "2026-10-30"
   },
   {
-    "id": "apt_2026000525_2026000525",
-    "name": "엘리프 시흥 더프라임",
+    "id": "apt_2026000539_2026000539",
+    "name": "남춘천 센트레빌",
     "agency": "민간",
-    "sido": "경기",
-    "gu": "시흥시",
-    "addr": "경기도 시흥시 거모동 시흥거모지구 B-5블록",
+    "sido": "강원",
+    "gu": "춘천시",
+    "addr": "강원특별자치도 춘천시 효자동 681-12 일원",
     "sizes": [
-      109
+      84,
+      116,
+      117,
+      118,
+      119
     ],
     "type": "매매",
-    "priceMin": 59910,
-    "priceMax": 59930,
+    "priceMin": 46513,
+    "priceMax": 63043,
     "deposit": 0,
     "rent": 0,
-    "households": 304,
+    "households": 264,
     "special": [
       "신혼부부",
       "다자녀가구",
@@ -55,31 +50,30 @@
       "노부모부양",
       "기관추천"
     ],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000525&pblancNo=2026000525",
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000539&pblancNo=2026000539",
     "rStart": "2026-11-09",
     "rEnd": "2026-11-11",
     "winDate": "2026-11-17",
-    "noticeDate": "2026-10-29"
+    "noticeDate": "2026-10-30"
   },
   {
-    "id": "apt_2026000499_2026000499",
-    "name": "한화포레나 지제역",
-    "agency": "민간",
+    "id": "apt_2026000533_2026000533",
+    "name": "안산신길2지구 B-1블록 공공분양주택(본청약)",
+    "agency": "LH",
     "sido": "경기",
-    "gu": "평택시",
-    "addr": "경기도 평택시 세교동 725번지 일원",
+    "gu": "안산시",
+    "addr": "경기도 안산시 단원구 신길동 일원 안산신길2 공공주택지구 내 B-1블록",
     "sizes": [
+      97,
       109,
-      110,
-      111,
-      149
+      110
     ],
     "type": "매매",
-    "priceMin": 70095,
-    "priceMax": 96845,
+    "priceMin": 51190,
+    "priceMax": 60969,
     "deposit": 0,
     "rent": 0,
-    "households": 1098,
+    "households": 124,
     "special": [
       "신혼부부",
       "다자녀가구",
@@ -87,56 +81,164 @@
       "노부모부양",
       "기관추천"
     ],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000499&pblancNo=2026000499",
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000533&pblancNo=2026000533",
     "rStart": "2026-11-09",
-    "rEnd": "2026-11-11",
-    "winDate": "2026-11-18",
-    "noticeDate": "2026-10-29"
+    "rEnd": "2026-11-18",
+    "winDate": "2026-11-30",
+    "noticeDate": "2026-10-30"
   },
   {
-    "id": "remndr_2026910267_2026910267",
-    "name": "교대역 모아엘가 그랑데",
-    "agency": "민간",
-    "sido": "전남",
-    "gu": "동구",
-    "addr": "전남광주통합특별시 동구 무등로 373",
-    "sizes": [
-      84
-    ],
-    "type": "매매",
-    "priceMin": 50300,
-    "priceMax": 50300,
-    "deposit": 0,
-    "rent": 0,
-    "households": 1,
-    "special": [],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910267&pblancNo=2026910267",
-    "rStart": "2026-11-03",
-    "rEnd": "2026-11-03",
-    "winDate": "2026-11-06",
-    "noticeDate": "2026-10-29"
-  },
-  {
-    "id": "opt_2026940237_2026940237",
-    "name": "엘리프 한신더휴 수원 C3블록(2차)",
+    "id": "apt_2026000528_2026000528",
+    "name": "광교 자연앤 센트레빌(A17BL) 공공분양주택",
     "agency": "민간",
     "sido": "경기",
     "gu": "수원시",
-    "addr": "경기도 수원시 권선구 금곡동 당수1지구 공공주택지구 내 C3블록",
+    "addr": "경기도 수원시 영통구 원천동 633번지 일원",
     "sizes": [
-      84
+      111,
+      113
     ],
     "type": "매매",
-    "priceMin": 73000,
-    "priceMax": 79500,
+    "priceMin": 93860,
+    "priceMax": 94930,
     "deposit": 0,
     "rent": 0,
-    "households": 21,
-    "special": [],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940237&pblancNo=2026940237",
-    "rStart": "20261102",
-    "rEnd": "20261103",
-    "winDate": "20261106",
-    "noticeDate": "20261029"
+    "households": 360,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000528&pblancNo=2026000528",
+    "rStart": "2026-11-09",
+    "rEnd": "2026-11-11",
+    "winDate": "2026-11-17",
+    "noticeDate": "2026-10-30"
+  },
+  {
+    "id": "apt_2026000527_2026000527",
+    "name": "광교 자연앤 센트레빌(A17BL) 지분적립형 분양주택",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "수원시",
+    "addr": "경기도 수원시 영통구 원천동 633번지 일원",
+    "sizes": [
+      79,
+      80,
+      81
+    ],
+    "type": "매매",
+    "priceMin": 66790,
+    "priceMax": 68590,
+    "deposit": 0,
+    "rent": 0,
+    "households": 240,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000527&pblancNo=2026000527",
+    "rStart": "2026-11-09",
+    "rEnd": "2026-11-11",
+    "winDate": "2026-11-18",
+    "noticeDate": "2026-10-30"
+  },
+  {
+    "id": "apt_2026000523_2026000523",
+    "name": "형곡 센트럴 아테라",
+    "agency": "민간",
+    "sido": "경북",
+    "gu": "구미시",
+    "addr": "경상북도 구미시 형곡동 141-11번지 외 3필지",
+    "sizes": [
+      81
+    ],
+    "type": "매매",
+    "priceMin": 38700,
+    "priceMax": 38700,
+    "deposit": 0,
+    "rent": 0,
+    "households": 135,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000523&pblancNo=2026000523",
+    "rStart": "2026-11-09",
+    "rEnd": "2026-11-11",
+    "winDate": "2026-11-17",
+    "noticeDate": "2026-10-30"
+  },
+  {
+    "id": "apt_2026000515_2026000515",
+    "name": "평택 고덕 우미 린 더 프리미어",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "평택시",
+    "addr": "경기도 평택시 고덕 국제화계획지구 내 Abc-33블록",
+    "sizes": [
+      110,
+      111,
+      122,
+      123,
+      131,
+      132,
+      143
+    ],
+    "type": "매매",
+    "priceMin": 56790,
+    "priceMax": 68190,
+    "deposit": 0,
+    "rent": 0,
+    "households": 623,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000515&pblancNo=2026000515",
+    "rStart": "2026-11-09",
+    "rEnd": "2026-11-11",
+    "winDate": "2026-11-17",
+    "noticeDate": "2026-10-30"
+  },
+  {
+    "id": "apt_2026000472_2026000472",
+    "name": "구리갈매역세권 B-1블록 신안인스빌 디센트",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "구리시",
+    "addr": "경기도 구리시 구리갈매역세권 B-1블록",
+    "sizes": [
+      98,
+      110
+    ],
+    "type": "매매",
+    "priceMin": 69580,
+    "priceMax": 78500,
+    "deposit": 0,
+    "rent": 0,
+    "households": 213,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000472&pblancNo=2026000472",
+    "rStart": "2026-11-09",
+    "rEnd": "2026-11-11",
+    "winDate": "2026-11-17",
+    "noticeDate": "2026-10-30"
   }
 ]
