@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-03T02:43:56.497672+00:00",
-  "count": 270,
+  "updatedAt": "2026-11-04T00:59:09.604360+00:00",
+  "count": 275,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -7132,6 +7132,135 @@
       "winDate": "2026-11-02",
       "noticeDate": "2026-11-02",
       "verifiedLink": false
+    },
+    {
+      "id": "apt_2026820014_2026820014",
+      "name": "남양주왕숙 A-2블록 신혼희망타운(공공분양) 잔여세대 추가입주자모집공고",
+      "agency": "LH",
+      "sido": "경기",
+      "gu": "남양주시",
+      "addr": "경기도 남양주시 진접읍, 진건읍, 퇴계원읍 일원, 남양주왕숙 공공주택지구 내 A-2블록",
+      "sizes": [
+        67,
+        80
+      ],
+      "type": "매매",
+      "priceMin": 35276,
+      "priceMax": 41908,
+      "deposit": 0,
+      "rent": 0,
+      "households": 32,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820014&pblancNo=2026820014",
+      "rStart": "2026-11-11",
+      "rEnd": "2026-11-12",
+      "winDate": "2026-11-19",
+      "noticeDate": "2026-11-03",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000554_2026000554",
+      "name": "리첼 에듀포레 경산역",
+      "agency": "민간",
+      "sido": "경북",
+      "gu": "경산시",
+      "addr": "경상북도 경산시 사정동 301-22번지 일원",
+      "sizes": [
+        83,
+        111,
+        112
+      ],
+      "type": "매매",
+      "priceMin": 48070,
+      "priceMax": 63811,
+      "deposit": 0,
+      "rent": 0,
+      "households": 201,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000554&pblancNo=2026000554",
+      "rStart": "2026-11-13",
+      "rEnd": "2026-11-17",
+      "winDate": "2026-11-23",
+      "noticeDate": "2026-11-03",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026910274_2026910274",
+      "name": "천안 롯데캐슬 더 청당",
+      "agency": "민간",
+      "sido": "충남",
+      "gu": "천안시",
+      "addr": "충청남도 천안시 동남구 청당4로 20",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 28460,
+      "priceMax": 42550,
+      "deposit": 0,
+      "rent": 0,
+      "households": 2,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910274&pblancNo=2026910274",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-09",
+      "winDate": "2026-11-12",
+      "noticeDate": "2026-11-03",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026910273_2026910273",
+      "name": "캐슬앤파밀리에 디아트(4-1생활권 P1구역 L2블록 수루배마을2단지)",
+      "agency": "민간",
+      "sido": "세종",
+      "gu": "",
+      "addr": "세종특별자치시 반곡1길 9 (반곡동, 수루배마을2단지)",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 24579,
+      "priceMax": 24579,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910273&pblancNo=2026910273",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-09",
+      "winDate": "2026-11-12",
+      "noticeDate": "2026-11-03",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026910272_2026910272",
+      "name": "캐슬앤파밀리에 디아트(4-1생활권 P1구역 M1블록 수루배마을1단지)",
+      "agency": "민간",
+      "sido": "세종",
+      "gu": "",
+      "addr": "세종특별자치시 반곡로 14 (반곡동, 수루배마을1단지)",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 34731,
+      "priceMax": 34731,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910272&pblancNo=2026910272",
+      "rStart": "2026-11-09",
+      "rEnd": "2026-11-09",
+      "winDate": "2026-11-12",
+      "noticeDate": "2026-11-03",
+      "verifiedLink": true
     }
   ]
 }
