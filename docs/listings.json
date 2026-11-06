@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-05T01:10:23.092794+00:00",
-  "count": 279,
+  "updatedAt": "2026-11-06T01:17:37.856524+00:00",
+  "count": 284,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -7356,6 +7356,132 @@
       "rEnd": "2026-11-09",
       "winDate": "2026-11-12",
       "noticeDate": "2026-11-04",
+      "verifiedLink": true
+    },
+    {
+      "id": "rent_2026850055_2026850055",
+      "name": "힐스테이트 회룡역파크뷰",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "의정부시",
+      "addr": "경기도 의정부시 신흥로 43",
+      "sizes": [
+        50,
+        60,
+        85
+      ],
+      "type": "전세",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 29282,
+      "rent": 0,
+      "households": 909,
+      "special": [
+        "청년",
+        "고령자"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850055&pblancNo=2026850055&houseSecd=03",
+      "rStart": "20261110",
+      "rEnd": "20261110",
+      "winDate": "20261113",
+      "noticeDate": "20261105",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026910282_2026910282",
+      "name": "광명 시티프라디움 에듀하임",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "광명시",
+      "addr": "경기도 광명시 소하동 광명 구름산지구 도시개발사업지구 A6BL",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 82700,
+      "priceMax": 119800,
+      "deposit": 0,
+      "rent": 0,
+      "households": 21,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910282&pblancNo=2026910282",
+      "rStart": "2026-11-10",
+      "rEnd": "2026-11-10",
+      "winDate": "2026-11-13",
+      "noticeDate": "2026-11-05",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026910279_2026910279",
+      "name": "봉담자이 프라이드시티",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "화성특례시",
+      "addr": "경기도 화성특례시 효행구 봉담읍 삼봉안길 30 (봉담내리지구 A1블록 봉담자이 프라이드시티)",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 45770,
+      "priceMax": 46220,
+      "deposit": 0,
+      "rent": 0,
+      "households": 2,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910279&pblancNo=2026910279",
+      "rStart": "2026-11-10",
+      "rEnd": "2026-11-10",
+      "winDate": "2026-11-13",
+      "noticeDate": "2026-11-05",
+      "verifiedLink": true
+    },
+    {
+      "id": "opt_2026940243_2026940243",
+      "name": "도안자이 센텀리체 2단지(2차)",
+      "agency": "민간",
+      "sido": "대전",
+      "gu": "유성구",
+      "addr": "대전광역시 유성구 도안 2-6지구 30블록(유성구 용계동 299-7번지 일원)",
+      "sizes": [
+        84
+      ],
+      "type": "매매",
+      "priceMin": 77490,
+      "priceMax": 77490,
+      "deposit": 0,
+      "rent": 0,
+      "households": 3,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940243&pblancNo=2026940243",
+      "rStart": "20261109",
+      "rEnd": "20261110",
+      "winDate": "20261113",
+      "noticeDate": "20261105",
+      "verifiedLink": true
+    },
+    {
+      "id": "opt_2026940242_2026940242",
+      "name": "도안자이 센텀리체 1단지(2차)",
+      "agency": "민간",
+      "sido": "대전",
+      "gu": "유성구",
+      "addr": "대전광역시 유성구 도안 2-8지구 26블록(유성구 용계동 267-3번지 일원)",
+      "sizes": [
+        84,
+        99
+      ],
+      "type": "매매",
+      "priceMin": 76920,
+      "priceMax": 99920,
+      "deposit": 0,
+      "rent": 0,
+      "households": 4,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940242&pblancNo=2026940242",
+      "rStart": "20261109",
+      "rEnd": "20261110",
+      "winDate": "20261113",
+      "noticeDate": "20261105",
       "verifiedLink": true
     }
   ]
