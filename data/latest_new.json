@@ -1,1 +1,49 @@
-[]
+[
+  {
+    "id": "remndr_2026910290_2026910290",
+    "name": "청계 노르웨이숲(14차)",
+    "agency": "민간",
+    "sido": "서울",
+    "gu": "중구",
+    "addr": "서울특별시 중구 황학동 1756번지 일원",
+    "sizes": [
+      84
+    ],
+    "type": "매매",
+    "priceMin": 73826,
+    "priceMax": 73826,
+    "deposit": 0,
+    "rent": 0,
+    "households": 6,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910290&pblancNo=2026910290",
+    "rStart": "2026-11-16",
+    "rEnd": "2026-11-17",
+    "winDate": "2026-11-20",
+    "noticeDate": "2026-11-09"
+  },
+  {
+    "id": "opt_2026940252_2026940252",
+    "name": "신월동 한양립스(3차)",
+    "agency": "민간",
+    "sido": "서울",
+    "gu": "양천구",
+    "addr": "서울특별시 양천구 신월동 118-14외 2필지 일대",
+    "sizes": [
+      45,
+      53
+    ],
+    "type": "매매",
+    "priceMin": 45480,
+    "priceMax": 52500,
+    "deposit": 0,
+    "rent": 0,
+    "households": 5,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940252&pblancNo=2026940252",
+    "rStart": "20261111",
+    "rEnd": "20261112",
+    "winDate": "20261117",
+    "noticeDate": "20261109"
+  }
+]
