@@ -1,24 +1,22 @@
 [
   {
-    "id": "apt_2026000576_2026000576",
-    "name": "아르뮤제자이",
+    "id": "apt_2026000566_2026000566",
+    "name": "호반써밋 초량",
     "agency": "민간",
-    "sido": "경기",
-    "gu": "안산시",
-    "addr": "경기도 안산시 상록구 성포동 586번지 일원",
+    "sido": "부산",
+    "gu": "동구",
+    "addr": "부산광역시 동구 초량3동 659번지 일원",
     "sizes": [
-      119,
-      121,
-      140,
-      141,
-      147
+      82,
+      97,
+      110
     ],
     "type": "매매",
-    "priceMin": 109900,
-    "priceMax": 140840,
+    "priceMin": 54820,
+    "priceMax": 74680,
     "deposit": 0,
     "rent": 0,
-    "households": 984,
+    "households": 236,
     "special": [
       "신혼부부",
       "다자녀가구",
@@ -26,30 +24,30 @@
       "노부모부양",
       "기관추천"
     ],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000576&pblancNo=2026000576",
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000566&pblancNo=2026000566",
     "rStart": "2026-11-23",
     "rEnd": "2026-11-25",
     "winDate": "2026-12-01",
-    "noticeDate": "2026-11-12"
+    "noticeDate": "2026-11-13"
   },
   {
-    "id": "apt_2026000457_2026000457",
-    "name": "부천대장 하우스토리 디센트(부천대장지구 A2BL) 공공분양주택",
+    "id": "apt_2026000563_2026000563",
+    "name": "더샵 트리센트(조합원 자격상실 세대분)",
     "agency": "민간",
-    "sido": "경기",
-    "gu": "부천시",
-    "addr": "경기도 부천시 오정구 대장동, 오정동, 원종동, 삼정동 일원 부천대장 공공주택지구 내 A2블록",
+    "sido": "부산",
+    "gu": "남구",
+    "addr": "부산광역시 남구 문현동 334번지 일원",
     "sizes": [
       81,
       102,
-      115
+      114
     ],
     "type": "매매",
-    "priceMin": 61345,
-    "priceMax": 85406,
+    "priceMin": 62800,
+    "priceMax": 84900,
     "deposit": 0,
     "rent": 0,
-    "households": 548,
+    "households": 103,
     "special": [
       "신혼부부",
       "다자녀가구",
@@ -57,58 +55,180 @@
       "노부모부양",
       "기관추천"
     ],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000457&pblancNo=2026000457",
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000563&pblancNo=2026000563",
     "rStart": "2026-11-23",
     "rEnd": "2026-11-25",
     "winDate": "2026-12-01",
-    "noticeDate": "2026-11-12"
+    "noticeDate": "2026-11-13"
   },
   {
-    "id": "urbty_2026950090_2026950090",
-    "name": "중화역 라온프라이빗 센트로",
+    "id": "apt_2026000560_2026000560",
+    "name": "해링턴 플레이스 문래",
     "agency": "민간",
     "sido": "서울",
-    "gu": "중랑구",
-    "addr": "서울특별시 중랑구 중화동 303-9번지 일원",
+    "gu": "영등포구",
+    "addr": "서울특별시 영등포구 문래동3가 27-1번지 일원",
     "sizes": [
-      20,
-      42,
-      60
+      109,
+      110
     ],
     "type": "매매",
-    "priceMin": 17800,
-    "priceMax": 54800,
+    "priceMin": 177500,
+    "priceMax": 182700,
     "deposit": 0,
     "rent": 0,
-    "households": 74,
-    "special": [],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026950090&pblancNo=2026950090&houseSecd=02",
-    "rStart": "2026-11-25",
+    "households": 218,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000560&pblancNo=2026000560",
+    "rStart": "2026-11-23",
     "rEnd": "2026-11-26",
     "winDate": "2026-12-02",
-    "noticeDate": "2026-11-12"
+    "noticeDate": "2026-11-13"
   },
   {
-    "id": "remndr_2026910287_2026910287",
-    "name": "더샵 청주그리니티(2차)",
+    "id": "apt_2026000558_2026000558",
+    "name": "화정1지구 아르엘",
     "agency": "민간",
-    "sido": "충북",
-    "gu": "청주시",
-    "addr": "충청북도 청주시 서원구 개신동 767번지",
+    "sido": "울산",
+    "gu": "동구",
+    "addr": "울산광역시 동구 화정동 12-6번지 일원",
+    "sizes": [
+      82,
+      113,
+      114,
+      115,
+      136
+    ],
+    "type": "매매",
+    "priceMin": 43590,
+    "priceMax": 61310,
+    "deposit": 0,
+    "rent": 0,
+    "households": 802,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000558&pblancNo=2026000558",
+    "rStart": "2026-11-23",
+    "rEnd": "2026-11-25",
+    "winDate": "2026-12-01",
+    "noticeDate": "2026-11-13"
+  },
+  {
+    "id": "apt_2026000540_2026000540",
+    "name": "엘리프 논산 디에디션",
+    "agency": "민간",
+    "sido": "충남",
+    "gu": "논산시",
+    "addr": "충청남도 논산시 내동3지구 도시개발구역 7블록 1로트 (내동 495번지 외) ",
+    "sizes": [
+      111,
+      112
+    ],
+    "type": "매매",
+    "priceMin": 50800,
+    "priceMax": 53200,
+    "deposit": 0,
+    "rent": 0,
+    "households": 499,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000540&pblancNo=2026000540",
+    "rStart": "2026-11-23",
+    "rEnd": "2026-11-25",
+    "winDate": "2026-12-02",
+    "noticeDate": "2026-11-13"
+  },
+  {
+    "id": "apt_2026000505_2026000505",
+    "name": "경희궁 에피트",
+    "agency": "민간",
+    "sido": "서울",
+    "gu": "종로구",
+    "addr": "서울특별시 종로구 교남동 28번지 일원",
+    "sizes": [
+      54,
+      78,
+      111
+    ],
+    "type": "매매",
+    "priceMin": 118241,
+    "priceMax": 257484,
+    "deposit": 0,
+    "rent": 0,
+    "households": 134,
+    "special": [
+      "신혼부부",
+      "다자녀가구",
+      "생애최초",
+      "노부모부양",
+      "기관추천"
+    ],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
+    "rStart": "2026-11-25",
+    "rEnd": "2026-11-30",
+    "winDate": "2026-12-04",
+    "noticeDate": "2026-11-13"
+  },
+  {
+    "id": "remndr_2026910299_2026910299",
+    "name": "용인 양지 서희스타힐스 하이뷰 (조합원 취소분)",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "용인시",
+    "addr": "경기도 용인시 처인구 양지읍 양지리 산105-8번지 일원",
     "sizes": [
       84
     ],
     "type": "매매",
-    "priceMin": 37708,
-    "priceMax": 37708,
+    "priceMin": 44500,
+    "priceMax": 57900,
     "deposit": 0,
     "rent": 0,
-    "households": 1,
+    "households": 19,
     "special": [],
-    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910287&pblancNo=2026910287",
-    "rStart": "2026-11-17",
-    "rEnd": "2026-11-17",
-    "winDate": "2026-11-20",
-    "noticeDate": "2026-11-12"
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910299&pblancNo=2026910299",
+    "rStart": "2026-11-18",
+    "rEnd": "2026-11-18",
+    "winDate": "2026-11-23",
+    "noticeDate": "2026-11-13"
+  },
+  {
+    "id": "opt_2026940249_2026940249",
+    "name": "야목역 서희스타힐스 그랜드힐(조합원 취소분)(2차)",
+    "agency": "민간",
+    "sido": "경기",
+    "gu": "화성특례시",
+    "addr": "경기도 화성특례시 효행구 비봉면 구포리 614-18번지 일원",
+    "sizes": [
+      84
+    ],
+    "type": "매매",
+    "priceMin": 56600,
+    "priceMax": 57600,
+    "deposit": 0,
+    "rent": 0,
+    "households": 13,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940249&pblancNo=2026940249",
+    "rStart": "20261117",
+    "rEnd": "20261123",
+    "winDate": "20261126",
+    "noticeDate": "20261113"
   }
 ]
