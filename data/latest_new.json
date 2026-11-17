@@ -1,1 +1,95 @@
-[]
+[
+  {
+    "id": "remndr_2026910296_2026910296",
+    "name": "힐스테이트 거제시그니처(1회차)",
+    "agency": "민간",
+    "sido": "경남",
+    "gu": "거제시",
+    "addr": "경상남도 거제시 옥포동 1670번지 일원",
+    "sizes": [
+      84
+    ],
+    "type": "매매",
+    "priceMin": 58660,
+    "priceMax": 165950,
+    "deposit": 0,
+    "rent": 0,
+    "households": 129,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910296&pblancNo=2026910296",
+    "rStart": "2026-11-23",
+    "rEnd": "2026-11-23",
+    "winDate": "2026-11-26",
+    "noticeDate": "2026-11-16"
+  },
+  {
+    "id": "opt_2026940262_2026940262",
+    "name": "리아츠 더 인천(24차)",
+    "agency": "민간",
+    "sido": "인천",
+    "gu": "제물포구",
+    "addr": "인천광역시 제물포구 송림동 31-3번지 일원",
+    "sizes": [
+      59,
+      74,
+      84
+    ],
+    "type": "매매",
+    "priceMin": 36800,
+    "priceMax": 54500,
+    "deposit": 0,
+    "rent": 0,
+    "households": 7,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940262&pblancNo=2026940262",
+    "rStart": "20261118",
+    "rEnd": "20261120",
+    "winDate": "20261125",
+    "noticeDate": "20261116"
+  },
+  {
+    "id": "opt_2026940256_2026940256",
+    "name": "디에이치 신반포에스테라",
+    "agency": "민간",
+    "sido": "서울",
+    "gu": "서초구",
+    "addr": "서울특별시 서초구 잠원동 65-33번지 일대",
+    "sizes": [
+      84
+    ],
+    "type": "매매",
+    "priceMin": 439800,
+    "priceMax": 439800,
+    "deposit": 0,
+    "rent": 0,
+    "households": 5,
+    "special": [],
+    "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940256&pblancNo=2026940256",
+    "rStart": "20261118",
+    "rEnd": "20261119",
+    "winDate": "20261124",
+    "noticeDate": "20261116"
+  },
+  {
+    "id": "sh_53e08bc49c1f",
+    "name": "동작구 홀몸어르신(수요자맞춤형)주택 잔여세대 입주자 모집 공고",
+    "agency": "SH",
+    "sido": "서울",
+    "gu": "",
+    "addr": "서울",
+    "sizes": [],
+    "type": "확인필요",
+    "priceMin": 0,
+    "priceMax": 0,
+    "deposit": 0,
+    "rent": 0,
+    "households": 0,
+    "special": [],
+    "link": "https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/list.do?multi_itm_seq=2",
+    "rStart": "2026-11-16",
+    "rEnd": "2026-11-16",
+    "winDate": "2026-11-16",
+    "noticeDate": "2026-11-16",
+    "verifiedLink": false
+  }
+]
