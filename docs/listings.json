@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-17T03:18:55.910764+00:00",
-  "count": 325,
+  "updatedAt": "2026-11-18T02:40:46.628185+00:00",
+  "count": 328,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -8565,6 +8565,85 @@
       "winDate": "2026-11-16",
       "noticeDate": "2026-11-16",
       "verifiedLink": false
+    },
+    {
+      "id": "rent_2026850056_2026850056",
+      "name": "서면 지원 더뷰 드림아파트(공공지원민간임대)",
+      "agency": "민간",
+      "sido": "부산",
+      "gu": "부산진구",
+      "addr": "부산광역시 부산진구 부전동 390-1",
+      "sizes": [
+        24,
+        50,
+        60
+      ],
+      "type": "전세",
+      "priceMin": 0,
+      "priceMax": 0,
+      "deposit": 11060,
+      "rent": 0,
+      "households": 145,
+      "special": [
+        "신혼부부"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850056&pblancNo=2026850056&houseSecd=03",
+      "rStart": "20261124",
+      "rEnd": "20261125",
+      "winDate": "20261201",
+      "noticeDate": "20261117",
+      "verifiedLink": true
+    },
+    {
+      "id": "remndr_2026930045_2026930045",
+      "name": "잠실 래미안아이파크",
+      "agency": "민간",
+      "sido": "서울",
+      "gu": "송파구",
+      "addr": "서울특별시 송파구 신천동 20-4번지 일대(잠실진주주택재건축정비사업)",
+      "sizes": [
+        69,
+        88,
+        113
+      ],
+      "type": "매매",
+      "priceMin": 110548,
+      "priceMax": 185607,
+      "deposit": 0,
+      "rent": 0,
+      "households": 3,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930045&pblancNo=2026930045",
+      "rStart": "2026-11-23",
+      "rEnd": "2026-11-24",
+      "winDate": "2026-11-27",
+      "noticeDate": "2026-11-17",
+      "verifiedLink": true
+    },
+    {
+      "id": "opt_2026940260_2026940260",
+      "name": "더샵 분당센트로(7차)",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "성남시",
+      "addr": "경기도 성남시 분당구 미금로 66",
+      "sizes": [
+        78,
+        84
+      ],
+      "type": "매매",
+      "priceMin": 196300,
+      "priceMax": 205900,
+      "deposit": 0,
+      "rent": 0,
+      "households": 6,
+      "special": [],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940260&pblancNo=2026940260",
+      "rStart": "20261120",
+      "rEnd": "20261124",
+      "winDate": "20261127",
+      "noticeDate": "20261117",
+      "verifiedLink": true
     }
   ]
 }
