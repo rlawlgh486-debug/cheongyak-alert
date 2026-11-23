@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "id": "sh_0fbea719055d",
+    "name": "NEW[청년형] 특화형 매입임대주택(서초구) 입주자 모집 공고(운영기관 : 마을과집 협동조합)",
+    "agency": "SH",
+    "sido": "서울",
+    "gu": "",
+    "addr": "서울",
+    "sizes": [],
+    "type": "확인필요",
+    "priceMin": 0,
+    "priceMax": 0,
+    "deposit": 0,
+    "rent": 0,
+    "households": 0,
+    "special": [],
+    "link": "https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/list.do?multi_itm_seq=2",
+    "rStart": "2026-11-23",
+    "rEnd": "2026-11-23",
+    "winDate": "2026-11-23",
+    "noticeDate": "2026-11-23",
+    "verifiedLink": false
+  },
+  {
+    "id": "sh_506a7eed96c9",
+    "name": "NEW[토지임대부 사회주택] 옥류서원 입주자 모집 공고문",
+    "agency": "SH",
+    "sido": "서울",
+    "gu": "",
+    "addr": "서울",
+    "sizes": [],
+    "type": "확인필요",
+    "priceMin": 0,
+    "priceMax": 0,
+    "deposit": 0,
+    "rent": 0,
+    "households": 0,
+    "special": [],
+    "link": "https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/list.do?multi_itm_seq=2",
+    "rStart": "2026-11-23",
+    "rEnd": "2026-11-23",
+    "winDate": "2026-11-23",
+    "noticeDate": "2026-11-23",
+    "verifiedLink": false
+  }
+]
