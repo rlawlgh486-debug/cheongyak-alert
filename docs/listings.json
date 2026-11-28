@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-27T03:23:42.142916+00:00",
-  "count": 384,
+  "updatedAt": "2026-11-28T03:01:46.774680+00:00",
+  "count": 393,
   "items": [
     {
       "id": "apt_2026000426_2026000426",
@@ -10085,6 +10085,296 @@
       "rEnd": "2026-12-01",
       "winDate": "2026-12-04",
       "noticeDate": "2026-11-26",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000612_2026000612",
+      "name": "용인반도체클러스터 동일하이빌 파크밸리 2단지(D1-2블록)",
+      "agency": "민간",
+      "sido": "경기",
+      "gu": "용인시",
+      "addr": "경기도 용인시 처인구 원삼면 용인 반도체 클러스터 일반산업단지 D1-2BL",
+      "sizes": [
+        80,
+        81,
+        96,
+        113
+      ],
+      "type": "매매",
+      "priceMin": 43200,
+      "priceMax": 56800,
+      "deposit": 0,
+      "rent": 0,
+      "households": 661,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000612&pblancNo=2026000612",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-10",
+      "winDate": "2026-12-16",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000592_2026000592",
+      "name": "경북도청 푸르지오 퍼스티온",
+      "agency": "민간",
+      "sido": "경북",
+      "gu": "예천군",
+      "addr": "경상북도 예천군 호명읍 경북도청신도시 2단계 B-10BL ",
+      "sizes": [
+        111,
+        112
+      ],
+      "type": "매매",
+      "priceMin": 43610,
+      "priceMax": 44960,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1165,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000592&pblancNo=2026000592",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-09",
+      "winDate": "2026-12-15",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000589_2026000589",
+      "name": "트리븐 가흥",
+      "agency": "민간",
+      "sido": "경북",
+      "gu": "영주시",
+      "addr": "경상북도 영주시 가흥동 1059-10 일원",
+      "sizes": [
+        108,
+        109,
+        110,
+        144
+      ],
+      "type": "매매",
+      "priceMin": 49900,
+      "priceMax": 76100,
+      "deposit": 0,
+      "rent": 0,
+      "households": 765,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000589&pblancNo=2026000589",
+      "rStart": "2026-12-02",
+      "rEnd": "2026-12-04",
+      "winDate": "2026-12-10",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000588_2026000588",
+      "name": "일광 THE S",
+      "agency": "민간",
+      "sido": "부산",
+      "gu": "기장군",
+      "addr": "부산광역시 기장군 일광읍 이천리 345-1번지 일원",
+      "sizes": [
+        117,
+        143,
+        155,
+        262,
+        303
+      ],
+      "type": "매매",
+      "priceMin": 97000,
+      "priceMax": 410000,
+      "deposit": 0,
+      "rent": 0,
+      "households": 1968,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000588&pblancNo=2026000588",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-09",
+      "winDate": "2026-12-15",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000574_2026000574",
+      "name": "송도 대광로제비앙 모아엘가",
+      "agency": "민간",
+      "sido": "인천",
+      "gu": "연수구",
+      "addr": "인천광역시 연수구 송도동 544 (송도국제도시 11공구 RC2BL)",
+      "sizes": [
+        110,
+        111
+      ],
+      "type": "매매",
+      "priceMin": 88200,
+      "priceMax": 88800,
+      "deposit": 0,
+      "rent": 0,
+      "households": 592,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000574&pblancNo=2026000574",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-09",
+      "winDate": "2026-12-15",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000573_2026000573",
+      "name": "세종스마트시티 엘 수자인(행정중심복합도시 5-1생활권 L11블록, 꽃나루마을 28단지)",
+      "agency": "민간",
+      "sido": "세종",
+      "gu": "일원(행정중심복합도시",
+      "addr": "세종특별자치시 합강동 40번지 일원(행정중심복합도시 5-1생활권 L11BL)",
+      "sizes": [
+        110,
+        111,
+        112
+      ],
+      "type": "매매",
+      "priceMin": 63830,
+      "priceMax": 65790,
+      "deposit": 0,
+      "rent": 0,
+      "households": 507,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000573&pblancNo=2026000573",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-09",
+      "winDate": "2026-12-16",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000572_2026000572",
+      "name": "세종스마트시티 엘 수자인(행정중심복합도시 5-1생활권 L8블록, 꽃나루마을 26단지)",
+      "agency": "민간",
+      "sido": "세종",
+      "gu": "일원(행정중심복합도시",
+      "addr": "세종특별자치시 합강동 산74-1번지 일원(행정중심복합도시 5-1생활권 L8BL)",
+      "sizes": [
+        111,
+        113
+      ],
+      "type": "매매",
+      "priceMin": 64400,
+      "priceMax": 66380,
+      "deposit": 0,
+      "rent": 0,
+      "households": 218,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000572&pblancNo=2026000572",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-09",
+      "winDate": "2026-12-17",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000571_2026000571",
+      "name": "세종스마트시티 엘 수자인(행정중심복합도시 5-1생활권 L7블록, 꽃나루마을 24단지)",
+      "agency": "민간",
+      "sido": "세종",
+      "gu": "일원(행정중심복합도시",
+      "addr": "세종특별자치시 합강동 산74-1번지 일원(행정중심복합도시 5-1생활권 L7BL)",
+      "sizes": [
+        110,
+        112,
+        113
+      ],
+      "type": "매매",
+      "priceMin": 65660,
+      "priceMax": 65670,
+      "deposit": 0,
+      "rent": 0,
+      "households": 648,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000571&pblancNo=2026000571",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-09",
+      "winDate": "2026-12-15",
+      "noticeDate": "2026-11-27",
+      "verifiedLink": true
+    },
+    {
+      "id": "apt_2026000570_2026000570",
+      "name": "세종스마트시티 엘 수자인(행정중심복합도시 5-1생활권 L6블록, 꽃나루마을 16단지)",
+      "agency": "민간",
+      "sido": "세종",
+      "gu": "(행정중심복합도시",
+      "addr": "세종특별자치시 합강동 171-3번지 일원 (행정중심복합도시 5-1생활권 L6BL)",
+      "sizes": [
+        112,
+        113,
+        114,
+        115
+      ],
+      "type": "매매",
+      "priceMin": 65470,
+      "priceMax": 68060,
+      "deposit": 0,
+      "rent": 0,
+      "households": 818,
+      "special": [
+        "신혼부부",
+        "다자녀가구",
+        "생애최초",
+        "노부모부양",
+        "기관추천"
+      ],
+      "link": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000570&pblancNo=2026000570",
+      "rStart": "2026-12-07",
+      "rEnd": "2026-12-09",
+      "winDate": "2026-12-15",
+      "noticeDate": "2026-11-27",
       "verifiedLink": true
     }
   ]
